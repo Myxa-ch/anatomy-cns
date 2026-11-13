@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анатомия: ЦНС и ЧМН I–VI</title>
+<meta name="description" content="Подготовка к контрольной по ЦНС и к занятию по черепным нервам I–VI: план на 3 часа, конспекты, тесты.">
+<style>
+:root {
+  --bg: #f5f2ec;
+  --surface: #fffdf9;
+  --surface-2: #efebe3;
+  --ink: #1d2a31;
+  --muted: #5d6b72;
+  --line: #ddd6c9;
+  --accent: #0e6b66;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcefec;
+  --warn: #b4481b;
+  --warn-soft: #fbe9df;
+  --ok: #2f7d4f;
+  --ok-soft: #e1f3e8;
+  --bad: #b3261e;
+  --bad-soft: #fbe4e2;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(29,42,49,.06), 0 6px 20px rgba(29,42,49,.06);
+  --serif: Georgia, "Times New Roman", "Noto Serif", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+:root[data-theme="dark"] {
+  --bg: #11181c;
+  --surface: #182227;
+  --surface-2: #1f2c32;
+  --ink: #e8eef0;
+  --muted: #9bacb3;
+  --line: #2b3a41;
+  --accent: #4fc3b9;
+  --accent-ink: #0b1a1c;
+  --accent-soft: #17332f;
+  --warn: #f08c5a;
+  --warn-soft: #3a2519;
+  --ok: #5fd08a;
+  --ok-soft: #173325;
+  --bad: #ff8a80;
+  --bad-soft: #3b1c1a;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11181c; --surface: #182227; --surface-2: #1f2c32; --ink: #e8eef0; --muted: #9bacb3;
+    --line: #2b3a41; --accent: #4fc3b9; --accent-ink: #0b1a1c; --accent-soft: #17332f;
+    --warn: #f08c5a; --warn-soft: #3a2519; --ok: #5fd08a; --ok-soft: #173325; --bad: #ff8a80; --bad-soft: #3b1c1a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.6 var(--sans);
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+
+/* top bar */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px clamp(14px, 4vw, 32px);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo { color: var(--accent); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--accent-soft); }
+.brand-title { font: 700 17px/1.2 var(--serif); letter-spacing: .2px; }
+.brand-sub { font-size: 12.5px; color: var(--muted); }
+.top-actions { display: flex; align-items: center; gap: 8px; }
+.timer {
+  font: 600 14px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  padding: 8px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line);
+  font-variant-numeric: tabular-nums;
+}
+.timer.running { border-color: var(--accent); color: var(--accent); }
+.icon-btn {
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  width: 38px; height: 38px; border-radius: 999px; font-size: 18px; cursor: pointer;
+}
+.icon-btn:hover { border-color: var(--accent); }
+
+/* nav */
+.nav {
+  display: flex; gap: 6px; padding: 10px clamp(14px, 4vw, 32px);
+  overflow-x: auto; scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  white-space: nowrap; text-decoration: none; color: var(--muted);
+  padding: 9px 16px; border-radius: 999px; font-weight: 600; font-size: 14.5px;
+  border: 1px solid transparent;
+}
+.nav a:hover { color: var(--ink); background: var(--surface-2); }
+.nav a.active { background: var(--accent); color: var(--accent-ink); }
+
+/* layout */
+main {
+  width: 100%; max-width: 980px; margin: 0 auto; flex: 1;
+  padding: 10px clamp(14px, 4vw, 32px) 56px; outline: none;
+}
+h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.25; }
+h1 { font-size: clamp(26px, 5vw, 38px); margin: 18px 0 6px; letter-spacing: -.3px; }
+h2 { font-size: clamp(21px, 3.4vw, 26px); margin: 0 0 10px; }
+h4 { font-size: 18px; margin: 26px 0 8px; color: var(--accent); }
+.lead { color: var(--muted); font-size: 17px; max-width: 62ch; margin: 0 0 22px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(16px, 3vw, 26px); box-shadow: var(--shadow); margin-bottom: 16px;
+}
+.grid { display: grid; gap: 14px; }
+.grid.two { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  padding: 10px 18px; border-radius: 12px; font: 600 15px var(--sans);
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.07); }
+.btn.small { padding: 6px 12px; font-size: 13.5px; border-radius: 10px; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+/* plan */
+.hero {
+  display: grid; gap: 18px; padding: clamp(18px, 4vw, 30px);
+  background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+  border: 1px solid var(--line); border-radius: 20px; margin-bottom: 18px;
+}
+.bigtimer { font: 700 clamp(40px, 9vw, 64px)/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+.progress { height: 10px; border-radius: 99px; background: var(--surface-2); overflow: hidden; border: 1px solid var(--line); }
+.progress > i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .35s; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.step {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px; transition: border-color .2s, opacity .2s;
+}
+.step.current { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.step.done { opacity: .6; }
+.step.done .step-title { text-decoration: line-through; }
+.step input[type=checkbox] { width: 22px; height: 22px; accent-color: var(--accent); cursor: pointer; }
+.step-title { font-weight: 650; }
+.step-goal { font-size: 14px; color: var(--muted); }
+.min { font: 600 13px ui-monospace, Menlo, monospace; background: var(--surface-2); padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+.step-links { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+.step-links a { font-size: 13.5px; color: var(--accent); font-weight: 600; text-decoration: none; }
+.step-links a:hover { text-decoration: underline; }
+.tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+.tag.warn { background: var(--warn-soft); color: var(--warn); }
+
+/* content typography */
+.content table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 15px; }
+.content .tablewrap { overflow-x: auto; margin: 12px 0 18px; border: 1px solid var(--line); border-radius: 12px; }
+.content .tablewrap table { margin: 0; min-width: 560px; }
+.content th, .content td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.content th { background: var(--surface-2); font-weight: 700; font-size: 13.5px; letter-spacing: .2px; }
+.content tr:last-child td { border-bottom: 0; }
+.content ul, .content ol { padding-left: 22px; }
+.content li { margin: 5px 0; }
+.content b { color: var(--ink); }
+.tip {
+  background: var(--warn-soft); border-left: 4px solid var(--warn); padding: 12px 16px;
+  border-radius: 10px; margin: 16px 0; font-size: 15px;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 18px; }
+.chip {
+  cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  padding: 8px 14px; border-radius: 999px; font: 600 14px var(--sans);
+}
+.chip:hover { border-color: var(--accent); }
+.chip.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+.block-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+details.fold { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); margin-bottom: 12px; }
+details.fold > summary { cursor: pointer; padding: 14px 18px; font: 700 18px var(--serif); list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary::after { content: "＋"; color: var(--accent); }
+details.fold[open] > summary::after { content: "−"; }
+details.fold > .content { padding: 0 18px 12px; }
+
+/* tests */
+.modes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin: 16px 0; }
+.mode {
+  text-align: left; cursor: pointer; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px 18px; color: var(--ink); font: inherit;
+  display: grid; gap: 4px; box-shadow: var(--shadow);
+}
+.mode:hover { border-color: var(--accent); transform: translateY(-1px); }
+.mode b { font: 700 18px var(--serif); }
+.mode span { color: var(--muted); font-size: 14px; }
+.mode:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+.q-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+.q-text { font: 600 clamp(19px, 3.2vw, 23px)/1.4 var(--serif); margin: 6px 0 18px; }
+.opts { display: grid; gap: 10px; }
+.opt {
+  text-align: left; cursor: pointer; background: var(--surface); color: var(--ink);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 13px 16px; font: 500 16px/1.45 var(--sans);
+  display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start;
+}
+.opt .k { width: 26px; height: 26px; border-radius: 8px; background: var(--surface-2); display: grid; place-items: center; font: 700 13px ui-monospace, monospace; }
+.opt:hover:not(:disabled) { border-color: var(--accent); }
+.opt.right { border-color: var(--ok); background: var(--ok-soft); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.opt:disabled { cursor: default; }
+.explain { margin-top: 16px; padding: 14px 16px; border-radius: 12px; background: var(--surface-2); font-size: 15.5px; }
+.explain.ok { background: var(--ok-soft); }
+.explain.bad { background: var(--bad-soft); }
+.score { font: 800 clamp(48px, 12vw, 84px)/1 var(--serif); color: var(--accent); }
+.bars { display: grid; gap: 10px; margin: 14px 0; }
+.bar-row { display: grid; grid-template-columns: minmax(120px, 190px) 1fr 56px; gap: 10px; align-items: center; font-size: 14.5px; }
+.bar-row .progress { height: 12px; }
+.bar-row .progress > i.low { background: var(--bad); }
+.bar-row .progress > i.mid { background: #c58a1b; }
+.mistake { border-top: 1px solid var(--line); padding: 12px 0; }
+.mistake:first-child { border-top: 0; }
+.mistake .ans { color: var(--ok); font-weight: 600; }
+.mistake .your { color: var(--bad); }
+
+.foot { text-align: center; color: var(--muted); font-size: 13px; padding: 24px clamp(14px, 4vw, 32px) 36px; max-width: 760px; margin: 0 auto; }
+
+@media (max-width: 560px) {
+  .brand-sub { display: none; }
+  .step { grid-template-columns: auto 1fr; }
+  .step .min { grid-column: 2; justify-self: start; }
+  .bar-row { grid-template-columns: 1fr 56px; }
+  .bar-row .progress { grid-column: 1 / -1; order: 3; }
+}
+
+@media print {
+  .topbar, .nav, .foot, .no-print, .chips { display: none !important; }
+  body { background: #fff; color: #000; font-size: 12px; }
+  .card, details.fold { box-shadow: none; border: 0; padding: 0; }
+  details.fold > .content { display: block; }
+  .content .tablewrap { overflow: visible; border: 0; }
+  .content .tablewrap table { min-width: 0; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="28" height="28"><path d="M16 3c-4 0-6 2-7 4-3 0-5 3-4 6-2 2-2 6 1 8 0 3 3 5 6 4 1 2 5 3 8 0 3 1 6-1 6-4 3-2 3-6 1-8 1-3-1-6-4-6-1-2-3-4-7-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M16 5v22M11 12c2 1 3 3 5 3M21 12c-2 1-3 3-5 3M11 20c2-1 3-2 5-2M21 20c-2-1-3-2-5-2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </span>
+    <div>
+      <div class="brand-title">Анатомия нервной системы</div>
+      <div class="brand-sub">ЦНС · ЧМН I–VI</div>
+    </div>
+  </div>
+  <div class="top-actions">
+    <div class="timer" id="timerMini" title="Таймер подготовки">
+      <span id="timerMiniText">2:55:00</span>
+    </div>
+    <button class="icon-btn" id="themeBtn" aria-label="Сменить тему">◐</button>
+  </div>
+</header>
+
+<nav class="nav" id="nav">
+  <a href="#plan" data-route="plan"><span>План</span></a>
+  <a href="#brief" data-route="brief"><span>Конспект</span></a>
+  <a href="#detail" data-route="detail"><span>Подробно</span></a>
+  <a href="#cn" data-route="cn"><span>ЧМН I–VI</span></a>
+  <a href="#tests" data-route="tests"><span>Тесты</span></a>
+</nav>
+
+<main id="app" tabindex="-1"></main>
+
+<footer class="foot">
+  Структура — по рабочей программе дисциплины «Анатомия» СЗГМУ им. И. И. Мечникова (ПЗ.27–33, ПЗ.36).
+  Детали сверяй с учебником кафедры: Сапин (ГЭОТАР-Медиа), Гайворонский (Спецлит), Синельников (атлас, т. 4).
+</footer>
+
+<script>
+/* Контент: ЦНС (к контрольной) и ЧМН I–VI (к парам).
+   Структура по рабочей программе «Анатомия» СЗГМУ им. И. И. Мечникова (ПЗ.27–33, ПЗ.36). */
+window.CONTENT = {
+
+plan: [
+  { id: "map",  min: 5,  title: "Карта ЦНС: отделы и полости",             goal: "Назвать 5 отделов мозга и полость каждого." },
+  { id: "sc",   min: 25, title: "Спинной мозг и его оболочки",             goal: "Границы, утолщения, ядра серого вещества, канатики, оболочки, пункция." },
+  { id: "rh",   min: 30, title: "Ромбовидный мозг: продолговатый, мост, мозжечок, IV желудочек", goal: "Ядра ЧН по отделам, ножки мозжечка, дно IV желудочка." },
+  { id: "mid",  min: 20, title: "Средний и промежуточный мозг",            goal: "Холмики, чёрная субстанция, красное ядро; таламус, гипоталамус." },
+  { id: "tel",  min: 30, title: "Конечный мозг: извилины, ядра, капсула, желудочки, СМЖ", goal: "Корковые центры, базальные ядра, внутренняя капсула, ток ликвора." },
+  { id: "path", min: 25, title: "Проводящие пути: 1-й, 2-й, 3-й нейрон",   goal: "Пройти каждый путь от рецептора до коры по нейронам." },
+  { id: "test", min: 15, title: "Тест по ЦНС (экспресс)",                  goal: "20 вопросов, разобрать ошибки." },
+  { id: "cn",   min: 25, title: "ЧМН I–VI (к паре)",                       goal: "Ядра, выход из мозга и черепа, ветви V, иннервация." }
+],
+
+blocks: {
+
+/* ───────────────────────── 1. КАРТА ───────────────────────── */
+map: {
+  brief: `
+<ul>
+<li><b>ЦНС</b> = спинной мозг + головной мозг.</li>
+<li>Головной мозг — <b>5 отделов</b>: продолговатый, задний (мост + мозжечок), средний, промежуточный, конечный.</li>
+<li><b>Ствол мозга</b> = продолговатый + мост + средний мозг.</li>
+<li>Развитие: нервная трубка → 3 пузыря (передний, средний, ромбовидный) → 5 пузырей.</li>
+<li>Масса головного мозга взрослого — около 1300–1400 г.</li>
+</ul>
+<table>
+<tr><th>Отдел</th><th>Полость</th></tr>
+<tr><td>Спинной мозг</td><td>Центральный канал</td></tr>
+<tr><td>Продолговатый мозг, мост, мозжечок</td><td>IV желудочек</td></tr>
+<tr><td>Средний мозг</td><td>Водопровод мозга (Сильвиев)</td></tr>
+<tr><td>Промежуточный мозг</td><td>III желудочек</td></tr>
+<tr><td>Конечный мозг</td><td>Боковые желудочки (I и II)</td></tr>
+</table>`,
+  detail: `
+<h4>Эмбриогенез</h4>
+<p>Из нервной трубки на 4-й неделе формируются три мозговых пузыря, затем пять:</p>
+<table>
+<tr><th>3 пузыря</th><th>5 пузырей</th><th>Что из него развивается</th><th>Полость</th></tr>
+<tr><td rowspan="2">Передний (prosencephalon)</td><td>Конечный (telencephalon)</td><td>Полушария, базальные ядра, обонятельный мозг</td><td>Боковые желудочки</td></tr>
+<tr><td>Промежуточный (diencephalon)</td><td>Таламус, эпиталамус, метаталамус, гипоталамус, субталамус; сетчатка и зрительный нерв</td><td>III желудочек</td></tr>
+<tr><td>Средний (mesencephalon)</td><td>Средний мозг</td><td>Крыша (холмики), ножки мозга</td><td>Водопровод мозга</td></tr>
+<tr><td rowspan="2">Ромбовидный (rhombencephalon)</td><td>Задний (metencephalon)</td><td>Мост, мозжечок</td><td rowspan="2">IV желудочек</td></tr>
+<tr><td>Продолговатый (myelencephalon)</td><td>Продолговатый мозг</td></tr>
+</table>
+<h4>Как делится мозг на практике</h4>
+<ul>
+<li><b>Ствол</b>: продолговатый + мост + средний мозг. Из ствола выходят III–XII пары ЧН (I и II — производные переднего мозга).</li>
+<li><b>Перешеек ромбовидного мозга</b> — участок между мостом и средним мозгом (верхние мозжечковые ножки, верхний мозговой парус).</li>
+<li><b>Серое и белое вещество</b>: в спинном мозге серое внутри, белое снаружи; в полушариях есть и кора (поверхностное серое), и подкорковые ядра, и белое вещество между ними.</li>
+</ul>
+<div class="tip">Порядок «снизу вверх» для скелета ответа на экзамене: спинной → продолговатый → мост → мозжечок → IV желудочек → средний → промежуточный → конечный.</div>`
+},
+
+/* ───────────────────────── 2. СПИННОЙ МОЗГ ───────────────────────── */
+sc: {
+  brief: `
+<ul>
+<li>Длина 41–45 см, масса 34–38 г. Верхняя граница — уровень большого затылочного отверстия (перекрёст пирамид), нижняя — L1–L2.</li>
+<li><b>31 сегмент</b>: 8 шейных, 12 грудных, 5 поясничных, 5 крестцовых, 1 копчиковый.</li>
+<li>Утолщения: <b>шейное</b> (C5–Th2) и <b>пояснично-крестцовое</b> (L1–S2). Ниже — мозговой конус, концевая нить, конский хвост.</li>
+<li>Серое вещество: <b>передние</b> рога — двигательные; <b>задние</b> — чувствительные; <b>боковые</b> (C8–L2/3 и S2–S4) — вегетативные.</li>
+<li>Белое вещество: передний, боковой и задний канатики.</li>
+<li>Оболочки снаружи внутрь: твёрдая → паутинная → мягкая. Пространства: эпидуральное, субдуральное (щелевидное), субарахноидальное (ликвор).</li>
+<li>Люмбальная пункция — между L3–L4 (или L4–L5): ниже L2 спинного мозга нет, лежит конский хвост.</li>
+</ul>`,
+  detail: `
+<h4>Топография и внешнее строение</h4>
+<table>
+<tr><th>Параметр</th><th>Значение</th></tr>
+<tr><td>Длина</td><td>41–45 см (у женщин короче)</td></tr>
+<tr><td>Масса</td><td>34–38 г (около 2% массы головного мозга)</td></tr>
+<tr><td>Верхняя граница</td><td>Нижний край большого затылочного отверстия (место перекрёста пирамид)</td></tr>
+<tr><td>Нижняя граница</td><td>Верхний край L2 (у взрослого L1–L2); дальше мозговой конус</td></tr>
+<tr><td>Концевая нить</td><td>Внутренняя часть (в дуральном мешке, до S2) и наружная (до копчика)</td></tr>
+<tr><td>Конский хвост</td><td>Корешки поясничных, крестцовых и копчикового нервов, идущие вниз в дуральном мешке</td></tr>
+<tr><td>Борозды</td><td>Передняя срединная щель, задняя срединная борозда, передняя и задняя латеральные борозды (из них выходят передние и входят задние корешки)</td></tr>
+</table>
+<h4>Сегменты и скелетотопия</h4>
+<p>Сегмент — участок спинного мозга с одной парой корешков. Сегментов 31: C<sub>1–8</sub>, Th<sub>1–12</sub>, L<sub>1–5</sub>, S<sub>1–5</sub>, Co<sub>1</sub>. Из-за того, что позвоночник растёт быстрее мозга, сегмент лежит выше одноимённого позвонка.</p>
+<div class="tip">Цифры правила (по Шипо) в разных пособиях отличаются: некоторые методички дают для C5–Th4 смещение на 1 позвонок, для Th5–Th8 — на 2. Для контрольной бери вариант из методички кафедры; надёжно во всех источниках одно: Th10 ↔ L1–L2, Th11 ↔ L3–L5, Th12 ↔ S1–S5.</div>
+<table>
+<tr><th>Область</th><th>Правило (по позвонку)</th></tr>
+<tr><td>Шейные позвонки</td><td>Сегмент = номер позвонка + 1</td></tr>
+<tr><td>Верхние грудные (Th1–Th4)</td><td>Сегмент = номер позвонка + 2</td></tr>
+<tr><td>Средние грудные (Th5–Th8)</td><td>Сегмент = номер позвонка + 3</td></tr>
+<tr><td>Нижние грудные</td><td>Th10 — L1–L2; Th11 — L3–L5; Th12 — S1–S5</td></tr>
+</table>
+<h4>Серое вещество</h4>
+<table>
+<tr><th>Часть</th><th>Ядра</th><th>Функция</th></tr>
+<tr><td rowspan="3">Задний рог</td><td>Студенистое (желатинозное) вещество (Роландо)</td><td>Болевая и температурная чувствительность, переключение</td></tr>
+<tr><td>Собственное ядро заднего рога</td><td>2-й нейрон латерального и переднего спиноталамических путей</td></tr>
+<tr><td>Грудное ядро (Кларка), C8–L2(3)</td><td>2-й нейрон заднего спинно-мозжечкового пути (Флексига)</td></tr>
+<tr><td rowspan="2">Промежуточная зона</td><td>Промежуточно-медиальное ядро</td><td>Начало переднего спинно-мозжечкового пути (Говерса)</td></tr>
+<tr><td>Промежуточно-латеральное ядро (боковой рог): C8–L2(3) — симпатическое; S2–S4 — парасимпатическое</td><td>Вегетативная иннервация</td></tr>
+<tr><td>Передний рог</td><td>Латеральная группа ядер — мышцы конечностей; медиальная — мышцы туловища; центральное ядро — диафрагма (C3–C5)</td><td>α-мотонейроны (2-й нейрон пирамидного пути)</td></tr>
+</table>
+<h4>Белое вещество: канатики и пути</h4>
+<table>
+<tr><th>Канатик</th><th>Восходящие</th><th>Нисходящие</th></tr>
+<tr><td>Задний</td><td>Нежный пучок (Голля, медиально, нижняя половина тела, ниже Th4); клиновидный пучок (Бурдаха, латерально, выше Th4)</td><td>—</td></tr>
+<tr><td>Боковой</td><td>Задний спинно-мозжечковый (Флексига); передний спинно-мозжечковый (Говерса); латеральный спиноталамический; спинно-покрышечный</td><td>Латеральный кортикоспинальный (пирамидный); руброспинальный</td></tr>
+<tr><td>Передний</td><td>Передний спиноталамический</td><td>Передний кортикоспинальный; вестибулоспинальный; ретикулоспинальный; тектоспинальный; медиальный продольный пучок</td></tr>
+</table>
+<h4>Оболочки и пространства</h4>
+<table>
+<tr><th>Оболочка</th><th>Особенности</th></tr>
+<tr><td>Твёрдая (dura mater)</td><td>Плотная; в позвоночном канале не срастается с надкостницей — между ними эпидуральное пространство (жировая клетчатка и внутреннее позвоночное венозное сплетение). Заканчивается дуральным мешком на уровне S2</td></tr>
+<tr><td>Паутинная (arachnoidea)</td><td>Тонкая, бессосудистая. Под твёрдой — щелевидное субдуральное пространство</td></tr>
+<tr><td>Мягкая (pia mater)</td><td>Срастается с мозгом, содержит сосуды. Образует зубчатые связки (около 21 пары), фиксирующие мозг к твёрдой оболочке</td></tr>
+</table>
+<p><b>Субарахноидальное пространство</b> — между паутинной и мягкой; содержит ликвор; сообщается с таким же пространством головного мозга; расширено ниже L2 (<i>поясничная цистерна</i>). Поэтому пункцию делают на уровне L3–L4 (L4–L5): игла проходит кожу, связки, эпидуральное пространство, твёрдую и паутинную оболочки и попадает в ликвор, не повреждая мозг.</p>
+<h4>Кровоснабжение</h4>
+<ul>
+<li>Передняя спинномозговая артерия (одна) и две задние спинномозговые — из позвоночных артерий.</li>
+<li>Радикуло-медуллярные артерии подкрепляют их по ходу; самая крупная — <b>артерия Адамкевича</b> (большая передняя радикуло-медуллярная), чаще на уровне Th10–L2, чаще слева.</li>
+</ul>
+<h4>Рефлекторная дуга (соматическая)</h4>
+<p>Рецептор → чувствительный нейрон (псевдоуниполярный, спинномозговой узел) → задний корешок → интернейрон/прямо на мотонейрон → мотонейрон переднего рога → передний корешок → эффектор (мышца).</p>
+<div class="tip">Типичный вопрос: полупоражение спинного мозга (синдром Броун-Секара). На стороне поражения — паралич и потеря глубокой чувствительности; на противоположной — потеря болевой и температурной.</div>`
+},
+
+/* ───────────────────────── 3. РОМБОВИДНЫЙ ───────────────────────── */
+rh: {
+  brief: `
+<ul>
+<li><b>Продолговатый мозг</b> (около 25 мм): пирамиды (перекрёст), оливы, нежный и клиновидный бугорки. Ядра XII, IX, X, XI. Центры дыхания и кровообращения.</li>
+<li><b>Мост</b>: основание (ядра моста + поперечные волокна → средние ножки мозжечка) и покрышка (ядра V–VIII).</li>
+<li>Выход нервов: <b>XII</b> — между пирамидой и оливой; <b>IX, X, XI</b> — позади оливы; <b>VI, VII, VIII</b> — между мостом и продолговатым; <b>V</b> — из латеральной части моста.</li>
+<li><b>Мозжечок</b>: 2 полушария + червь; 3 пары ножек (нижние — к продолговатому, средние — к мосту, верхние — к среднему мозгу); ядра: зубчатое, пробковидное, шаровидное, шатра.</li>
+<li><b>IV желудочек</b>: дно — ромбовидная ямка; крыша — верхний и нижний мозговые паруса; отверстия: срединное (Мажанди) и 2 латеральных (Люшка).</li>
+</ul>`,
+  detail: `
+<h4>Продолговатый мозг (medulla oblongata)</h4>
+<ul>
+<li>Границы: снизу — перекрёст пирамид, сверху — поперечная борозда у заднего края моста.</li>
+<li>Спереди: <b>пирамиды</b> (кортикоспинальные пути), <b>перекрёст пирамид</b>; сбоку — <b>оливы</b> (в них нижнее оливное ядро).</li>
+<li>Сзади: продолжение задних канатиков — <b>нежный и клиновидный бугорки</b> (в них ядра Голля и Бурдаха); выше — нижние мозжечковые ножки (верёвчатые тела).</li>
+</ul>
+<table>
+<tr><th>Борозда</th><th>Что выходит</th></tr>
+<tr><td>Передне-латеральная (между пирамидой и оливой)</td><td>XII пара (подъязычный)</td></tr>
+<tr><td>Задне-латеральная (позади оливы)</td><td>IX, X, XI пары</td></tr>
+</table>
+<h4>Ядра продолговатого мозга</h4>
+<table>
+<tr><th>Ядро</th><th>Нерв</th><th>Функция</th></tr>
+<tr><td>Ядро подъязычного нерва</td><td>XII</td><td>Двигательное, мышцы языка</td></tr>
+<tr><td>Двойное ядро (nucl. ambiguus)</td><td>IX, X, XI (краниальная часть)</td><td>Двигательное: мышцы глотки, гортани, мягкого нёба</td></tr>
+<tr><td>Дорсальное ядро блуждающего нерва</td><td>X</td><td>Парасимпатическое</td></tr>
+<tr><td>Нижнее слюноотделительное ядро</td><td>IX</td><td>Парасимпатическое (околоушная железа)</td></tr>
+<tr><td>Ядро одиночного пути</td><td>VII, IX, X</td><td>Вкус и висцеральная чувствительность</td></tr>
+<tr><td>Ядро спинномозгового пути V</td><td>V</td><td>Боль и температура лица (идёт от моста до C2–C3)</td></tr>
+<tr><td>Ядра нежного и клиновидного пучков</td><td>—</td><td>2-й нейрон сознательной проприоцептивной чувствительности</td></tr>
+<tr><td>Нижнее оливное ядро</td><td>—</td><td>Связь с мозжечком (оливо-мозжечковый путь)</td></tr>
+</table>
+<p>Ретикулярная формация продолговатого содержит <b>дыхательный и сосудодвигательный центры</b>, центры кашля, рвоты, глотания.</p>
+<h4>Мост (pons)</h4>
+<ul>
+<li>Спереди — базилярная борозда (в ней базилярная артерия).</li>
+<li><b>Основание</b>: ядра моста, поперечные волокна (идут в среднюю мозжечковую ножку), продольные пучки (кортикоспинальные, кортико-нуклеарные, кортико-мостовые).</li>
+<li><b>Покрышка</b>: ядра V, VI, VII, VIII пар, ретикулярная формация, медиальная петля, трапециевидное тело (слуховой путь).</li>
+</ul>
+<table>
+<tr><th>Ядра моста</th><th>Нерв</th></tr>
+<tr><td>Двигательное ядро; главное чувствительное ядро</td><td>V</td></tr>
+<tr><td>Ядро отводящего нерва (лежит под лицевым бугорком)</td><td>VI</td></tr>
+<tr><td>Двигательное ядро лицевого; верхнее слюноотделительное ядро</td><td>VII</td></tr>
+<tr><td>Улитковые ядра (переднее и заднее); вестибулярные ядра (медиальное, верхнее, латеральное — Дейтерса, нижнее)</td><td>VIII</td></tr>
+</table>
+<p><b>Мосто-мозжечковый угол</b> — место выхода VII и VIII пар (и промежуточного нерва). V выходит из латеральной части моста на границе со средней ножкой мозжечка. VI выходит у пирамиды между мостом и продолговатым.</p>
+<h4>Мозжечок (cerebellum)</h4>
+<ul>
+<li>Масса 120–150 г. Два <b>полушария</b> и непарный <b>червь</b>.</li>
+<li>Доли: передняя, задняя, клочково-узелковая (отделена задне-латеральной щелью).</li>
+<li>Серое вещество — кора и 4 пары ядер; белое — «древо жизни».</li>
+</ul>
+<table>
+<tr><th>Ножки</th><th>Куда ведут</th><th>Основные пути</th></tr>
+<tr><td>Нижние</td><td>К продолговатому</td><td>Задний спинно-мозжечковый (Флексиг), оливо-мозжечковый, вестибулярные волокна</td></tr>
+<tr><td>Средние</td><td>К мосту</td><td>Мосто-мозжечковый (кора → ядра моста → кора мозжечка)</td></tr>
+<tr><td>Верхние</td><td>К среднему мозгу</td><td>Передний спинно-мозжечковый (Говерс), эфферентные волокна от зубчатого ядра к красному ядру и таламусу</td></tr>
+</table>
+<table>
+<tr><th>Ядра (от латерального к медиальному)</th></tr>
+<tr><td>Зубчатое → пробковидное → шаровидное → ядро шатра</td></tr>
+</table>
+<table>
+<tr><th>Филогенез</th><th>Структура</th><th>Связи</th></tr>
+<tr><td>Архицеребеллум</td><td>Клочково-узелковая доля</td><td>Вестибулярный аппарат; равновесие</td></tr>
+<tr><td>Палеоцеребеллум</td><td>Червь, передняя доля</td><td>Спинной мозг; тонус и поза</td></tr>
+<tr><td>Неоцеребеллум</td><td>Полушария</td><td>Кора больших полушарий; координация произвольных движений</td></tr>
+</table>
+<p>Кора мозжечка — 3 слоя: <b>молекулярный</b> (поверхностный), <b>ганглионарный</b> (клетки Пуркинье — единственные эфферентные клетки коры), <b>зернистый</b>.</p>
+<h4>IV желудочек</h4>
+<ul>
+<li><b>Дно</b> — ромбовидная ямка (продолговатый мозг + мост). Срединная борозда делит её пополам; пограничная борозда отделяет двигательные ядра (медиально) от чувствительных (латерально).</li>
+<li>Детали дна: лицевой бугорок (колено VII вокруг ядра VI), вестибулярное поле, треугольник подъязычного нерва, треугольник блуждающего нерва, голубое пятно, мозговые полоски.</li>
+<li><b>Крыша (шатёр)</b>: верхний мозговой парус и нижний мозговой парус.</li>
+<li><b>Связи</b>: вверх — с водопроводом мозга; вниз — с центральным каналом; наружу — через <b>срединную апертуру (Мажанди)</b> и <b>две латеральные (Люшка)</b> в субарахноидальное пространство.</li>
+</ul>
+<div class="tip">Двигательные ядра на дне IV желудочка лежат <b>медиально</b>, чувствительные — <b>латерально</b>.</div>`
+},
+
+/* ───────────────────────── 4. СРЕДНИЙ + ПРОМЕЖУТОЧНЫЙ ───────────────────────── */
+mid: {
+  brief: `
+<ul>
+<li><b>Средний мозг</b>: крыша (четверохолмие) и ножки мозга. <b>Верхние холмики</b> — подкорковые центры зрения, <b>нижние</b> — слуха. Полость — водопровод мозга.</li>
+<li>Ножка мозга: основание (пирамидные и корково-мостовые пути) → <b>чёрная субстанция</b> → покрышка (красное ядро, ядра III и IV).</li>
+<li>III выходит из межножковой ямки; IV — единственный ЧН, выходящий на дорсальной поверхности (под нижними холмиками).</li>
+<li><b>Промежуточный мозг</b>: таламус, эпиталамус (эпифиз), метаталамус (коленчатые тела), гипоталамус, субталамус. Полость — III желудочек.</li>
+<li>Таламус — коллектор всех видов чувствительности (кроме обоняния); <b>VPL</b> — туловище и конечности, <b>VPM</b> — лицо.</li>
+<li>Латеральное коленчатое тело — зрение, медиальное — слух.</li>
+<li>Гипоталамус: супраоптическое и паравентрикулярное ядра — вазопрессин и окситоцин; регуляция гипофиза и вегетативной системы.</li>
+</ul>`,
+  detail: `
+<h4>Средний мозг (mesencephalon)</h4>
+<table>
+<tr><th>Часть</th><th>Содержимое</th></tr>
+<tr><td>Крыша (пластинка четверохолмия)</td><td>Верхние холмики — подкорковые центры зрения (ориентировочные зрительные рефлексы); нижние холмики — подкорковые центры слуха. Ручки холмиков идут к коленчатым телам</td></tr>
+<tr><td>Ножки мозга: основание</td><td>Средние 3/5 — кортикоспинальные и кортико-нуклеарные пути; медиальная 1/5 — лобно-мостовой; латеральная 1/5 — височно-теменно-затылочно-мостовой пути</td></tr>
+<tr><td>Чёрная субстанция</td><td>Между основанием и покрышкой; дофаминергические нейроны, связь с полосатым телом (экстрапирамидная система). Её дегенерация — болезнь Паркинсона</td></tr>
+<tr><td>Покрышка</td><td>Красное ядро, ядра III и IV пар, ретикулярная формация, центральное серое вещество, ядро среднемозгового пути V, медиальная и боковая петли, медиальный продольный пучок</td></tr>
+<tr><td>Полость</td><td>Водопровод мозга (Сильвиев), соединяет III и IV желудочки</td></tr>
+</table>
+<table>
+<tr><th>Нерв</th><th>Ядро</th><th>Уровень</th><th>Выход</th></tr>
+<tr><td>III глазодвигательный</td><td>Двигательное; добавочное (Якубовича–Эдингера–Вестфаля, парасимпатическое)</td><td>Верхние холмики</td><td>Межножковая ямка</td></tr>
+<tr><td>IV блоковый</td><td>Двигательное</td><td>Нижние холмики</td><td>Позади нижних холмиков, по сторонам уздечки верхнего мозгового паруса (дорсально); перекрещивается</td></tr>
+</table>
+<p>Красное ядро: начало руброспинального пути (перекрёст Фореля), связано с мозжечком и полосатым телом.</p>
+<h4>Промежуточный мозг (diencephalon)</h4>
+<table>
+<tr><th>Часть</th><th>Структуры</th><th>Функция</th></tr>
+<tr><td>Таламус (дорсальный)</td><td>Ядра: передние, медиальные, латеральные (дорсальная и вентральная группы), подушка</td><td>Коллектор чувствительности; переключение на кору (3-й нейрон)</td></tr>
+<tr><td>Эпиталамус</td><td>Шишковидное тело (эпифиз), поводки, спайка поводков, задняя спайка</td><td>Эпифиз выделяет мелатонин (суточные ритмы)</td></tr>
+<tr><td>Метаталамус</td><td>Латеральное и медиальное коленчатые тела</td><td>Латеральное — зрение; медиальное — слух</td></tr>
+<tr><td>Гипоталамус</td><td>Серый бугор, воронка, сосцевидные тела, зрительный перекрёст (граница). Около 30 пар ядер</td><td>Высший вегетативный центр, связь с гипофизом</td></tr>
+<tr><td>Субталамус</td><td>Субталамическое ядро (Льюиса)</td><td>Экстрапирамидная система</td></tr>
+</table>
+<h4>Ядра таламуса, которые нужно знать</h4>
+<table>
+<tr><th>Ядро</th><th>Что переключает</th></tr>
+<tr><td>Вентральное заднелатеральное (VPL)</td><td>Общая чувствительность туловища и конечностей (пути Голля–Бурдаха и спиноталамические)</td></tr>
+<tr><td>Вентральное заднемедиальное (VPM)</td><td>Общая чувствительность лица (тригеминальная петля), вкус</td></tr>
+<tr><td>Передние ядра</td><td>Лимбическая система (связь с сосцевидными телами)</td></tr>
+<tr><td>Подушка</td><td>Зрительные и слуховые ассоциативные связи</td></tr>
+</table>
+<h4>Ядра гипоталамуса (по группам)</h4>
+<table>
+<tr><th>Группа</th><th>Ядра</th><th>Роль</th></tr>
+<tr><td>Передняя</td><td>Супраоптическое (вазопрессин/АДГ), паравентрикулярное (окситоцин), преоптические</td><td>Нейросекреция в нейрогипофиз; терморегуляция (охлаждение)</td></tr>
+<tr><td>Средняя</td><td>Серобугорные, вентромедиальное, дорсомедиальное, дугообразное (инфундибулярное)</td><td>Либерины и статины к аденогипофизу; насыщение; голод</td></tr>
+<tr><td>Задняя</td><td>Сосцевидные тела, заднее гипоталамическое</td><td>Симпатические реакции, согревание; обонятельные и лимбические связи</td></tr>
+</table>
+<h4>III желудочек</h4>
+<p>Узкая щель по средней линии между таламусами. Сообщается с боковыми желудочками через <b>межжелудочковые отверстия (Монро)</b> и с IV желудочком — через водопровод мозга. Стенки: боковые — таламус и гипоталамус; дно — гипоталамус; крыша — сосудистая основа с сосудистым сплетением.</p>`
+},
+
+/* ───────────────────────── 5. КОНЕЧНЫЙ МОЗГ ───────────────────────── */
+tel: {
+  brief: `
+<ul>
+<li>Доли: <b>лобная, теменная, височная, затылочная, островок</b>. Главные борозды: центральная (Роландо), латеральная (Сильвиева), теменно-затылочная.</li>
+<li><b>Центры коры</b>: прецентральная (поле 4) — двигательный; постцентральная — общая чувствительность; шпорная борозда (17) — зрение; извилины Гешля (41) — слух; нижняя лобная (Брока, 44) — моторная речь; верхняя височная (Вернике, 22) — понимание речи; надкраевая (40) — праксис; угловая (39) — чтение.</li>
+<li><b>Базальные ядра</b>: хвостатое, чечевицеобразное (скорлупа + бледный шар), ограда, миндалина. Полосатое тело = хвостатое + скорлупа.</li>
+<li><b>Внутренняя капсула</b>: передняя ножка, колено (кортико-нуклеарный путь), задняя ножка (кортикоспинальный путь и чувствительные пути).</li>
+<li>Белое вещество: ассоциативные, комиссуральные (мозолистое тело, передняя спайка, спайка свода), проекционные волокна.</li>
+<li><b>Ликвор</b>: сосудистые сплетения желудочков → боковые → Монро → III → водопровод → IV → отверстия Мажанди и Люшка → субарахноидальное пространство → арахноидальные грануляции → верхний сагиттальный синус.</li>
+<li>Оболочки: твёрдая (отростки: серп, намёт, серп мозжечка, диафрагма седла), паутинная, мягкая. Эпидурального пространства в черепе нет.</li>
+</ul>`,
+  detail: `
+<h4>Борозды и доли</h4>
+<table>
+<tr><th>Борозда</th><th>Разделяет</th></tr>
+<tr><td>Центральная (Роландо)</td><td>Лобную и теменную доли</td></tr>
+<tr><td>Латеральная (Сильвиева)</td><td>Лобную и теменную — от височной</td></tr>
+<tr><td>Теменно-затылочная (на медиальной поверхности)</td><td>Теменную и затылочную</td></tr>
+</table>
+<p><b>Островок</b> (insula) лежит в глубине латеральной борозды; его покрывают покрышки лобной, теменной и височной долей.</p>
+<h4>Корковые концы анализаторов и центры</h4>
+<div class="tip">Номера полей Бродмана и часть локализаций (вкус, обоняние, центр письма) в учебниках формулируются по-разному. Основные центры (4, 3-1-2, 17, 41, 44/45, 22) совпадают везде.</div>
+<table>
+<tr><th>Центр</th><th>Локализация</th><th>Поле Бродмана</th></tr>
+<tr><td>Двигательный анализатор (моторная кора)</td><td>Прецентральная извилина (верх — нижняя конечность, низ — лицо). Клетки Беца в V слое</td><td>4 (и 6)</td></tr>
+<tr><td>Общая чувствительность (кожный, проприоцептивный)</td><td>Постцентральная извилина (проекция такая же — «перевёрнутый человек»)</td><td>3, 1, 2</td></tr>
+<tr><td>Зрительный</td><td>Затылочная доля, края шпорной борозды (клин, язычная извилина)</td><td>17</td></tr>
+<tr><td>Слуховой</td><td>Верхняя височная извилина, поперечные височные извилины (Гешля)</td><td>41, 42</td></tr>
+<tr><td>Обонятельный</td><td>Крючок и парагиппокампальная извилина</td><td>28</td></tr>
+<tr><td>Вкусовой</td><td>Нижняя часть постцентральной извилины, область крючка (в разных учебниках формулировки отличаются — сверь с тем, по которому учат на кафедре)</td><td>43</td></tr>
+<tr><td>Центр Брока (моторный центр речи)</td><td>Задняя часть нижней лобной извилины</td><td>44, 45</td></tr>
+<tr><td>Центр Вернике (сенсорный центр речи)</td><td>Задняя часть верхней височной извилины</td><td>22</td></tr>
+<tr><td>Центр праксиса (целенаправленные действия)</td><td>Надкраевая извилина (левая)</td><td>40</td></tr>
+<tr><td>Центр чтения (зрительный центр письменной речи)</td><td>Угловая извилина</td><td>39</td></tr>
+<tr><td>Центр письма (Экснера)</td><td>Задняя часть средней лобной извилины</td><td>6 / 8</td></tr>
+<tr><td>Центр стереогнозии (узнавание предметов на ощупь)</td><td>Верхняя теменная долька</td><td>7</td></tr>
+</table>
+<h4>Базальные ядра</h4>
+<table>
+<tr><th>Ядро</th><th>Особенности</th></tr>
+<tr><td>Хвостатое ядро</td><td>Голова, тело, хвост; лежит в стенке бокового желудочка</td></tr>
+<tr><td>Чечевицеобразное ядро</td><td>Скорлупа (латерально) + бледный шар (медиально)</td></tr>
+<tr><td>Полосатое тело (стриатум)</td><td>Хвостатое ядро + скорлупа</td></tr>
+<tr><td>Ограда</td><td>Тонкая пластинка между скорлупой и корой островка. Между скорлупой и оградой — наружная капсула; между оградой и островком — крайняя капсула</td></tr>
+<tr><td>Миндалевидное тело</td><td>В глубине височной доли; лимбическая система, эмоции</td></tr>
+</table>
+<h4>Внутренняя капсула</h4>
+<table>
+<tr><th>Часть</th><th>Границы</th><th>Пути</th></tr>
+<tr><td>Передняя ножка</td><td>Между головкой хвостатого и чечевицеобразным ядром</td><td>Лобно-мостовой; таламо-лобные волокна</td></tr>
+<tr><td>Колено</td><td>Угол на уровне межжелудочкового отверстия</td><td>Кортико-нуклеарный (к ядрам ЧН)</td></tr>
+<tr><td>Задняя ножка</td><td>Между таламусом и чечевицеобразным ядром</td><td>Кортикоспинальный путь (передние 2/3); таламо-теменной (чувствительные пути, задняя 1/3)</td></tr>
+<tr><td>Заднечечевицеобразная и подчечевицеобразная части</td><td>Позади и под чечевицеобразным ядром</td><td>Зрительная и слуховая лучистости</td></tr>
+</table>
+<p>Кровоснабжение внутренней капсулы и базальных ядер — чечевицеобразно-полосатые ветви средней мозговой артерии (классическое место геморрагического инсульта). При его поражении развивается гемиплегия на противоположной стороне.</p>
+<h4>Белое вещество</h4>
+<table>
+<tr><th>Тип волокон</th><th>Связывают</th><th>Примеры</th></tr>
+<tr><td>Ассоциативные</td><td>Участки коры одного полушария</td><td>Пояс, верхний и нижний продольные пучки, крючковидный пучок</td></tr>
+<tr><td>Комиссуральные</td><td>Симметричные участки двух полушарий</td><td>Мозолистое тело (клюв, колено, ствол, валик), передняя спайка, спайка свода</td></tr>
+<tr><td>Проекционные</td><td>Кору с нижележащими отделами</td><td>Восходящие и нисходящие пути через внутреннюю капсулу</td></tr>
+</table>
+<h4>Лимбическая система</h4>
+<p>Поясная извилина, парагиппокампальная извилина, гиппокамп, зубчатая извилина, крючок, миндалевидное тело, свод, сосцевидные тела, передние ядра таламуса. Функции: эмоции, память, вегетативные реакции.</p>
+<h4>Боковые желудочки</h4>
+<table>
+<tr><th>Часть</th><th>Доля</th></tr>
+<tr><td>Передний рог</td><td>Лобная</td></tr>
+<tr><td>Центральная часть</td><td>Теменная</td></tr>
+<tr><td>Задний рог</td><td>Затылочная</td></tr>
+<tr><td>Нижний рог</td><td>Височная</td></tr>
+</table>
+<p>Стенки переднего рога: медиально — прозрачная перегородка, латерально — голова хвостатого ядра. В центральной части и нижнем роге — сосудистое сплетение.</p>
+<h4>Оболочки головного мозга</h4>
+<table>
+<tr><th>Оболочка</th><th>Особенности</th></tr>
+<tr><td>Твёрдая</td><td>Двухлистковая: наружный лист срастается с костями черепа (эпидурального пространства нет). Между листками — венозные синусы. Отростки: серп большого мозга, намёт мозжечка, серп мозжечка, диафрагма седла</td></tr>
+<tr><td>Паутинная</td><td>Образует арахноидальные грануляции (Пахиони), выступающие в просвет верхнего сагиттального синуса</td></tr>
+<tr><td>Мягкая</td><td>Заходит в борозды, образует сосудистые сплетения желудочков</td></tr>
+</table>
+<p><b>Субарахноидальные цистерны</b>: мозжечково-мозговая (большая), межножковая, цистерна перекрёста, цистерна латеральной ямки.</p>
+<p><b>Венозные синусы твёрдой оболочки</b>: верхний и нижний сагиттальные, прямой, поперечный, сигмовидный, затылочный, пещеристый, верхний и нижний каменистые. Сток синусов — место слияния верхнего сагиттального, прямого, поперечного и затылочного. Из сигмовидного синуса кровь идёт во внутреннюю яремную вену.</p>
+<h4>Циркуляция ликвора</h4>
+<ol>
+<li>Образуется сосудистыми сплетениями желудочков (около 500 мл в сутки; одновременно в системе 120–150 мл).</li>
+<li>Боковые желудочки → межжелудочковые отверстия (Монро) → III желудочек → водопровод мозга → IV желудочек.</li>
+<li>Из IV желудочка через срединную (Мажанди) и латеральные (Люшка) апертуры → субарахноидальное пространство головного и спинного мозга.</li>
+<li>Всасывается через арахноидальные грануляции в венозные синусы (верхний сагиттальный).</li>
+</ol>
+<h4>Артериальный круг большого мозга (Виллизиев)</h4>
+<p>Образуют: передняя соединительная артерия, передние мозговые, внутренние сонные (конечные отрезки), задние соединительные, задние мозговые артерии. Базилярная артерия в круг не входит — она делится на две задние мозговые. Круг замкнут и перераспределяет кровоток между каротидным и вертебро-базилярным бассейнами.</p>`
+},
+
+/* ───────────────────────── 6. ПРОВОДЯЩИЕ ПУТИ ───────────────────────── */
+path: {
+  brief: `
+<p><b>Правило:</b> каждый путь описывай одинаково — рецептор → 1-й нейрон (где тело) → 2-й нейрон (ядро, перекрёст) → 3-й нейрон → кора.</p>
+<table>
+<tr><th>Путь</th><th>Что проводит</th><th>1-й нейрон</th><th>2-й нейрон и перекрёст</th><th>3-й нейрон → кора</th></tr>
+<tr><td>Голля и Бурдаха</td><td>Суставно-мышечное чувство, вибрация, тонкое осязание</td><td>Спинномозговой узел</td><td>Ядра нежное и клиновидное (продолговатый); перекрёст — медиальная петля</td><td>VPL таламуса → постцентральная извилина</td></tr>
+<tr><td>Латеральный спиноталамический</td><td>Боль, температура</td><td>Спинномозговой узел</td><td>Собственное ядро заднего рога; перекрёст в белой спайке на 1–2 сегмента выше</td><td>VPL → постцентральная извилина</td></tr>
+<tr><td>Передний спиноталамический</td><td>Грубое осязание, давление</td><td>Спинномозговой узел</td><td>Собственное ядро заднего рога; перекрёст в белой спайке</td><td>VPL → постцентральная извилина</td></tr>
+<tr><td>Флексига (задний спинно-мозжечковый)</td><td>Бессознательная проприоцепция</td><td>Спинномозговой узел</td><td>Ядро Кларка; без перекрёста (нижняя ножка)</td><td>Кора червя мозжечка</td></tr>
+<tr><td>Говерса (передний спинно-мозжечковый)</td><td>Бессознательная проприоцепция</td><td>Спинномозговой узел</td><td>Промежуточно-медиальное ядро; двойной перекрёст (верхняя ножка)</td><td>Кора червя мозжечка</td></tr>
+<tr><td>Кортикоспинальный (пирамидный)</td><td>Произвольные движения туловища и конечностей</td><td>Клетки Беца прецентральной извилины</td><td>Мотонейроны передних рогов; перекрёст пирамид (80–85%)</td><td>Мышцы</td></tr>
+<tr><td>Кортико-нуклеарный</td><td>Произвольные движения головы</td><td>Нижняя часть прецентральной извилины</td><td>Двигательные ядра ЧН (частичный перекрёст)</td><td>Мышцы головы и шеи</td></tr>
+</table>`,
+  detail: `
+<h4>Общая схема</h4>
+<table>
+<tr><th>Группа</th><th>Описание</th></tr>
+<tr><td>Ассоциативные</td><td>Связи в пределах одного полушария</td></tr>
+<tr><td>Комиссуральные</td><td>Связи между полушариями</td></tr>
+<tr><td>Проекционные восходящие (афферентные)</td><td>Экстероцептивные (боль, температура, осязание, зрение, слух, вкус, обоняние), проприоцептивные (суставно-мышечное чувство), интероцептивные</td></tr>
+<tr><td>Проекционные нисходящие (эфферентные)</td><td>Пирамидные (кортикоспинальный, кортико-нуклеарный) и экстрапирамидные (руброспинальный, вестибулоспинальный, ретикулоспинальный, тектоспинальный)</td></tr>
+</table>
+
+<h4>1. Путь Голля и Бурдаха (задние канатики)</h4>
+<table>
+<tr><th>Нейрон</th><th>Где</th><th>Ход</th></tr>
+<tr><td>Рецептор</td><td>Мышцы, сухожилия, суставы, кожа</td><td>Периферический отросток → спинномозговой нерв</td></tr>
+<tr><td>1-й нейрон</td><td>Псевдоуниполярные клетки спинномозгового узла</td><td>Центральный отросток → задний корешок → задний канатик (Голля — от нижней половины тела, ниже Th4; Бурдаха — от верхней) → продолговатый мозг</td></tr>
+<tr><td>2-й нейрон</td><td>Ядра нежного и клиновидного пучков (продолговатый)</td><td>Внутренние дугообразные волокна → <b>перекрёст медиальных петель</b> → медиальная петля (через мост и покрышку среднего мозга)</td></tr>
+<tr><td>3-й нейрон</td><td>VPL таламуса</td><td>Задняя ножка внутренней капсулы → постцентральная извилина (поля 3, 1, 2)</td></tr>
+</table>
+
+<h4>2. Латеральный спиноталамический путь</h4>
+<table>
+<tr><th>Нейрон</th><th>Где</th><th>Ход</th></tr>
+<tr><td>1-й</td><td>Спинномозговой узел</td><td>Задний корешок → задний рог</td></tr>
+<tr><td>2-й</td><td>Собственное ядро заднего рога</td><td>Перекрёст в передней белой спайке (через 1–2 сегмента) → боковой канатик противоположной стороны → ствол (спинномозговая петля)</td></tr>
+<tr><td>3-й</td><td>VPL таламуса</td><td>Задняя ножка внутренней капсулы → постцентральная извилина</td></tr>
+</table>
+<p><b>Передний спиноталамический</b> — грубое осязание и давление; ход тот же, но в передних канатиках.</p>
+
+<h4>3. Спинно-мозжечковые пути</h4>
+<table>
+<tr><th>Путь</th><th>2-й нейрон</th><th>Ход</th><th>Куда</th></tr>
+<tr><td>Флексига (задний)</td><td>Грудное ядро Кларка (C8–L2)</td><td>Боковой канатик той же стороны (<b>без перекрёста</b>) → нижняя мозжечковая ножка</td><td>Кора червя</td></tr>
+<tr><td>Говерса (передний)</td><td>Промежуточно-медиальное ядро</td><td>Перекрёст в белой спайке → боковой канатик противоположной стороны → верхняя ножка → повторный перекрёст в верхнем мозговом парусе</td><td>Кора червя</td></tr>
+</table>
+
+<h4>4. Тригеминальные пути (чувствительность лица)</h4>
+<table>
+<tr><th>Модальность</th><th>1-й нейрон</th><th>2-й нейрон</th><th>3-й нейрон</th></tr>
+<tr><td>Боль и температура</td><td>Тройничный узел (Гассеров)</td><td>Ядро спинномозгового пути V; перекрёст → тройничная петля</td><td>VPM таламуса → нижняя часть постцентральной извилины</td></tr>
+<tr><td>Осязание, давление</td><td>Тройничный узел</td><td>Главное чувствительное ядро V (частично с перекрёстом)</td><td>VPM → постцентральная извилина</td></tr>
+</table>
+
+<h4>5. Слуховой путь</h4>
+<table>
+<tr><th>Нейрон</th><th>Где</th><th>Ход</th></tr>
+<tr><td>1-й</td><td>Спиральный узел улитки (биполярные клетки)</td><td>Улитковая часть VIII → переднее и заднее улитковые ядра</td></tr>
+<tr><td>2-й</td><td>Улитковые ядра (мост)</td><td>Частичный перекрёст в трапециевидном теле → боковая петля</td></tr>
+<tr><td>3-й</td><td>Нижние холмики и медиальное коленчатое тело</td><td>Слуховая лучистость (подчечевицеобразная часть капсулы) → извилины Гешля (поле 41)</td></tr>
+</table>
+
+<h4>6. Зрительный путь</h4>
+<table>
+<tr><th>Нейрон</th><th>Где</th><th>Ход</th></tr>
+<tr><td>Рецепторы</td><td>Палочки и колбочки сетчатки</td><td>—</td></tr>
+<tr><td>1-й</td><td>Биполярные клетки сетчатки</td><td>—</td></tr>
+<tr><td>2-й</td><td>Ганглиозные клетки сетчатки</td><td>Аксоны → зрительный нерв → <b>зрительный перекрёст</b> (перекрещиваются волокна от медиальных, носовых половин сетчаток) → зрительный тракт</td></tr>
+<tr><td>3-й</td><td>Латеральное коленчатое тело (и подушка)</td><td>Зрительная лучистость Грациоле (заднечечевицеобразная часть капсулы) → шпорная борозда (поле 17)</td></tr>
+</table>
+<p>К верхним холмикам идут волокна для зрительных ориентировочных рефлексов (тектоспинальный путь), к ядру Якубовича — для зрачкового рефлекса.</p>
+
+<h4>7. Кортикоспинальный (пирамидный) путь</h4>
+<table>
+<tr><th>Нейрон</th><th>Где</th><th>Ход</th></tr>
+<tr><td>1-й</td><td>Пирамидные клетки Беца (V слой) прецентральной извилины (поле 4, частично 6)</td><td>Лучистый венец → задняя ножка внутренней капсулы (передние 2/3) → основание ножки мозга (средние 3/5) → основание моста → пирамида продолговатого</td></tr>
+<tr><td>Перекрёст</td><td>Перекрёст пирамид (граница продолговатого и спинного мозга)</td><td>80–85% волокон → латеральный кортикоспинальный путь (боковой канатик); 15–20% → передний кортикоспинальный (передний канатик), перекрещивается на уровне сегмента в белой спайке</td></tr>
+<tr><td>2-й</td><td>α-мотонейроны передних рогов</td><td>Передний корешок → спинномозговой нерв → скелетная мышца</td></tr>
+</table>
+<h4>8. Кортико-нуклеарный путь</h4>
+<p>Клетки нижней трети прецентральной извилины → колено внутренней капсулы → ядра ЧН в стволе (обе стороны, то есть частичный перекрёст) → мышцы головы и шеи. Исключения с односторонней (противоположной) иннервацией: нижняя часть мимических мышц (VII) и подъязычный нерв (XII).</p>
+
+<h4>9. Экстрапирамидные пути</h4>
+<table>
+<tr><th>Путь</th><th>Начало</th><th>Перекрёст</th><th>Канатик</th><th>Функция</th></tr>
+<tr><td>Руброспинальный (Монакова)</td><td>Красное ядро</td><td>Вентральный перекрёст покрышки (Фореля)</td><td>Боковой</td><td>Тонус сгибателей, поза</td></tr>
+<tr><td>Тектоспинальный</td><td>Верхние и нижние холмики</td><td>Дорсальный перекрёст покрышки (Мейнерта)</td><td>Передний</td><td>Зрительные и слуховые ориентировочные рефлексы</td></tr>
+<tr><td>Вестибулоспинальный</td><td>Латеральное вестибулярное ядро (Дейтерса)</td><td>Нет</td><td>Передний</td><td>Тонус разгибателей, равновесие</td></tr>
+<tr><td>Ретикулоспинальный</td><td>Ретикулярная формация</td><td>Частично</td><td>Передний и боковой</td><td>Тонус мышц, вегетативные реакции</td></tr>
+</table>
+<div class="tip">Не путай перекрёсты: <b>Форель</b> — вентральный, красноядерно-спинномозговой путь; <b>Мейнерт</b> — дорсальный, тектоспинальный путь.</div>`
+}
+},
+
+/* ───────────────────────── ЧМН I–VI ───────────────────────── */
+cn: {
+  brief: `
+<table>
+<tr><th>№</th><th>Нерв</th><th>Тип</th><th>Из мозга</th><th>Из черепа</th><th>Иннервирует</th></tr>
+<tr><td>I</td><td>Обонятельный (n. olfactorius)</td><td>Чувствительный</td><td>Обонятельная луковица</td><td>Решётчатая пластинка</td><td>Обонятельная область слизистой носа</td></tr>
+<tr><td>II</td><td>Зрительный (n. opticus)</td><td>Чувствительный</td><td>Зрительный перекрёст (отросток мозга)</td><td>Зрительный канал</td><td>Сетчатка → зрение</td></tr>
+<tr><td>III</td><td>Глазодвигательный (n. oculomotorius)</td><td>Двигательный + парасимпатический</td><td>Межножковая ямка</td><td>Верхняя глазничная щель</td><td>Верхняя, нижняя, медиальная прямые, нижняя косая, поднимающая верхнее веко; сфинктер зрачка и ресничная мышца</td></tr>
+<tr><td>IV</td><td>Блоковый (n. trochlearis)</td><td>Двигательный</td><td>Дорсально, ниже нижних холмиков</td><td>Верхняя глазничная щель</td><td>Верхняя косая мышца</td></tr>
+<tr><td>V</td><td>Тройничный (n. trigeminus)</td><td>Смешанный</td><td>Латеральная часть моста</td><td>V1 — верхняя глазничная щель; V2 — круглое отверстие; V3 — овальное отверстие</td><td>Кожа и слизистые лица, зубы; жевательные мышцы</td></tr>
+<tr><td>VI</td><td>Отводящий (n. abducens)</td><td>Двигательный</td><td>Между мостом и пирамидой продолговатого</td><td>Верхняя глазничная щель</td><td>Латеральная прямая мышца</td></tr>
+</table>
+<div class="tip">Мнемоника для типа: <b>I, II</b> — чувствительные; <b>III, IV, VI</b> — двигательные (глазодвигательные); <b>V</b> — смешанный.</div>`,
+  detail: `
+<h4>I пара — обонятельный нерв (n. olfactorius)</h4>
+<ul>
+<li>Чувствительный. Ядра в стволе нет: это производное переднего мозга.</li>
+<li>Путь: обонятельные клетки слизистой верхнего носового хода и верхней части перегородки → 15–20 обонятельных нитей → через <b>решётчатую пластинку</b> решётчатой кости → <b>обонятельная луковица</b> → обонятельный тракт → обонятельный треугольник → передняя продырявленная субстанция, парагиппокампальная извилина, крючок.</li>
+<li>Клиника: аносмия при переломе основания черепа в области решётчатой кости, опухолях передней черепной ямки.</li>
+</ul>
+
+<h4>II пара — зрительный нерв (n. opticus)</h4>
+<ul>
+<li>Чувствительный. По происхождению — отросток промежуточного мозга: по сути, это <b>тракт</b>, а не периферический нерв; поэтому одет тремя мозговыми оболочками (между влагалищами — пространства, сообщающиеся с подпаутинным).</li>
+<li>Образован аксонами ганглиозных клеток сетчатки (около 1 млн). Диск зрительного нерва — «слепое пятно».</li>
+<li>Выходит из глазницы через <b>зрительный канал</b> (вместе с глазной артерией), образует <b>зрительный перекрёст</b>, затем зрительный тракт → латеральное коленчатое тело.</li>
+<li>Клиника: при поражении перекрёста — битемпоральная гемианопсия; при поражении тракта — гомонимная гемианопсия.</li>
+</ul>
+
+<h4>III пара — глазодвигательный нерв (n. oculomotorius)</h4>
+<table>
+<tr><th>Параметр</th><th>Данные</th></tr>
+<tr><td>Волокна</td><td>Двигательные и парасимпатические</td></tr>
+<tr><td>Ядра (средний мозг, на уровне верхних холмиков)</td><td>Двигательное ядро; добавочное ядро (Якубовича–Эдингера–Вестфаля) — парасимпатическое</td></tr>
+<tr><td>Выход из мозга</td><td>Межножковая ямка</td></tr>
+<tr><td>Ход</td><td>Боковая стенка пещеристого синуса → верхняя глазничная щель → делится на ветви</td></tr>
+<tr><td>Верхняя ветвь</td><td>Мышца, поднимающая верхнее веко; верхняя прямая мышца</td></tr>
+<tr><td>Нижняя ветвь</td><td>Медиальная прямая, нижняя прямая, нижняя косая мышцы; парасимпатический корешок → <b>ресничный узел</b></td></tr>
+<tr><td>Парасимпатика</td><td>Ресничный узел → мышца, суживающая зрачок (сфинктер), ресничная мышца (аккомодация)</td></tr>
+</table>
+<p>Клиника: птоз, расходящееся косоглазие (глаз смотрит вниз и кнаружи), расширенный зрачок (мидриаз), нарушение аккомодации.</p>
+
+<h4>IV пара — блоковый нерв (n. trochlearis)</h4>
+<ul>
+<li>Двигательный. Самый тонкий ЧН. Ядро — в среднем мозге на уровне нижних холмиков.</li>
+<li>Единственный нерв, выходящий на <b>дорсальной поверхности</b> ствола (ниже нижних холмиков, по сторонам уздечки верхнего мозгового паруса); волокна <b>полностью перекрещиваются</b>. Огибает ножку мозга сбоку.</li>
+<li>Через верхнюю глазничную щель → <b>верхняя косая мышца</b>.</li>
+<li>Клиника: двоение при взгляде вниз (трудно спускаться по лестнице), компенсаторный наклон головы.</li>
+</ul>
+
+<h4>V пара — тройничный нерв (n. trigeminus)</h4>
+<table>
+<tr><th>Ядра</th><th>Функция</th></tr>
+<tr><td>Двигательное ядро (мост)</td><td>Жевательные мышцы</td></tr>
+<tr><td>Главное чувствительное ядро (мост)</td><td>Осязание и давление лица</td></tr>
+<tr><td>Ядро спинномозгового пути (от моста до C2–C3)</td><td>Боль и температура лица</td></tr>
+<tr><td>Ядро среднемозгового пути</td><td>Проприоцепция жевательных мышц</td></tr>
+</table>
+<ul>
+<li>Два корешка: большой чувствительный и малый двигательный. Выход — из латеральной части моста на границе со средней мозжечковой ножкой.</li>
+<li><b>Тройничный узел (Гассеров)</b> — на передней поверхности пирамиды височной кости, в тройничной полости (в вдавлении тройничного нерва).</li>
+</ul>
+<table>
+<tr><th>Ветвь</th><th>Тип</th><th>Отверстие</th><th>Главные ветви</th><th>Область</th></tr>
+<tr><td><b>V1</b> — n. ophthalmicus</td><td>Чувствительная</td><td>Верхняя глазничная щель</td><td>Лобный (надглазничный, надблоковый); слёзный; носоресничный (передний и задний решётчатые, подблоковый, длинные ресничные); менингеальная ветвь</td><td>Кожа лба и верхнего века, слёзная железа, конъюнктива, слизистая верхней носовой полости, глазное яблоко</td></tr>
+<tr><td><b>V2</b> — n. maxillaris</td><td>Чувствительная</td><td>Круглое отверстие → крылонёбная ямка</td><td>Скуловой; крылонёбные (к узлу → носовые, нёбные, глоточный); подглазничный нерв (верхние луночковые → верхнее зубное сплетение); менингеальная ветвь</td><td>Кожа средней зоны лица, слизистая носа и нёба, зубы верхней челюсти</td></tr>
+<tr><td><b>V3</b> — n. mandibularis</td><td>Смешанная</td><td>Овальное отверстие → подвисочная ямка</td><td><i>Чувств.:</i> щёчный, ушно-височный, язычный, нижний луночковый (→ подбородочный), менингеальный. <i>Двигат.:</i> жевательный, глубокие височные, латеральный и медиальный крыловидные, к мышце, напрягающей барабанную перепонку, и к мышце, напрягающей нёбную занавеску; челюстно-подъязычный</td><td>Кожа нижней трети лица и височной области, слизистая щеки, передние 2/3 языка (общая чувствительность), зубы нижней челюсти; жевательные мышцы</td></tr>
+</table>
+<ul>
+<li>Мышцы V3: жевательная, височная, медиальная и латеральная крыловидные, челюстно-подъязычная, переднее брюшко двубрюшной, напрягающая барабанную перепонку, напрягающая нёбную занавеску.</li>
+<li>Вегетативные узлы головы, связанные с V: <b>ресничный</b> (III, V1), <b>крылонёбный</b> (VII, V2), <b>ушной</b> (IX, V3), <b>поднижнечелюстной</b> и <b>подъязычный</b> (VII, V3 через язычный).</li>
+<li>Вкус передних 2/3 языка идёт по барабанной струне (VII) к язычному нерву — общая чувствительность этого отдела от V3, вкусовая — от VII.</li>
+<li>Точки выхода ветвей (Валле): надглазничная вырезка, подглазничное и подбородочное отверстия.</li>
+<li>Клиника: невралгия тройничного нерва (приступообразная боль); роговичный рефлекс: афферентная часть — V1, эфферентная — VII.</li>
+</ul>
+
+<h4>VI пара — отводящий нерв (n. abducens)</h4>
+<ul>
+<li>Двигательный. Ядро — в мосту, под лицевым бугорком дна IV желудочка (колено лицевого нерва огибает ядро отводящего).</li>
+<li>Выход: борозда между мостом и пирамидой продолговатого мозга.</li>
+<li>Проходит через <b>пещеристый синус</b> (в просвете, рядом с внутренней сонной артерией — в отличие от III, IV, V1, V2, лежащих в боковой стенке) → верхняя глазничная щель → <b>латеральная прямая мышца</b>.</li>
+<li>Клиника: сходящееся косоглазие, диплопия при взгляде кнаружи.</li>
+</ul>
+
+<h4>Что проходит через верхнюю глазничную щель</h4>
+<p>III, IV, VI и V1 (в том числе лобный, слёзный, носоресничный нервы), верхняя глазная вена.</p>
+<h4>Сводная таблица по глазодвигательной группе</h4>
+<table>
+<tr><th>Мышца</th><th>Нерв</th></tr>
+<tr><td>Латеральная прямая</td><td>VI</td></tr>
+<tr><td>Верхняя косая</td><td>IV</td></tr>
+<tr><td>Верхняя, нижняя, медиальная прямые; нижняя косая; поднимающая верхнее веко</td><td>III</td></tr>
+<tr><td>Сфинктер зрачка; ресничная мышца</td><td>III (парасимпатика)</td></tr>
+<tr><td>Дилататор зрачка</td><td>Симпатика (верхний шейный узел)</td></tr>
+</table>`
+}
+
+};
+
+</script>
+<script>
+/* Банк вопросов. Формат: [тема, вопрос, правильный ответ, [3 неправильных], пояснение]
+   Порядок вариантов перемешивается при показе. */
+(function () {
+  var Q = [];
+  function t(topic, q, c, w, e) { Q.push({ topic: topic, q: q, c: c, w: w, e: e }); }
+
+  /* ───── ЦНС: карта ───── */
+  t("map", "Из какого мозгового пузыря развиваются мост и мозжечок?", "Из заднего (часть ромбовидного)", ["Из среднего", "Из промежуточного", "Из конечного"], "Ромбовидный пузырь даёт задний мозг (мост + мозжечок) и продолговатый мозг.");
+  t("map", "Какая полость у среднего мозга?", "Водопровод мозга", ["III желудочек", "IV желудочек", "Центральный канал"], "Водопровод (Сильвиев) соединяет III и IV желудочки.");
+  t("map", "Полость промежуточного мозга называется:", "III желудочек", ["Водопровод мозга", "IV желудочек", "Боковой желудочек"], "Промежуточный мозг — III желудочек.");
+  t("map", "Из каких частей состоит ствол мозга?", "Продолговатый мозг, мост, средний мозг", ["Продолговатый мозг, мозжечок, промежуточный мозг", "Мост, мозжечок, средний мозг", "Средний, промежуточный и конечный мозг"], "Мозжечок и промежуточный мозг в ствол не входят.");
+
+  /* ───── Спинной мозг ───── */
+  t("sc", "Нижняя граница спинного мозга у взрослого — на уровне:", "L1–L2", ["Th12", "L4", "S2"], "Ниже лежит конский хвост; дуральный мешок заканчивается на уровне S2.");
+  t("sc", "Сколько сегментов в спинном мозге?", "31", ["29", "33", "41"], "8 шейных, 12 грудных, 5 поясничных, 5 крестцовых, 1 копчиковый.");
+  t("sc", "Пояснично-крестцовое утолщение соответствует сегментам:", "L1–S2", ["Th10–L1", "L3–S4", "S2–Co1"], "Шейное утолщение — C5–Th2.");
+  t("sc", "Где лежат симпатические ядра спинного мозга?", "В боковых рогах C8–L2(3)", ["В передних рогах", "В задних рогах", "В боковых рогах S2–S4"], "S2–S4 — парасимпатическое ядро.");
+  t("sc", "Грудное ядро (Кларка) является началом:", "Заднего спинно-мозжечкового пути (Флексига)", ["Переднего спинно-мозжечкового пути (Говерса)", "Латерального спиноталамического пути", "Пучка Голля"], "Говерс начинается в промежуточно-медиальном ядре.");
+  t("sc", "Почему люмбальную пункцию делают на уровне L3–L4?", "Ниже L2 в дуральном мешке лежит конский хвост, а не спинной мозг", ["Там заканчивается твёрдая оболочка", "Там нет паутинной оболочки", "Там проходит артерия Адамкевича"], "Игла проходит между корешками и попадает в ликвор поясничной цистерны.");
+  t("sc", "Эпидуральное пространство спинного мозга расположено между:", "Надкостницей позвоночного канала и твёрдой оболочкой", ["Твёрдой и паутинной оболочками", "Паутинной и мягкой оболочками", "Мягкой оболочкой и мозгом"], "Содержит жировую клетчатку и венозное сплетение.");
+  t("sc", "Зубчатые связки спинного мозга образованы:", "Мягкой оболочкой", ["Твёрдой оболочкой", "Паутинной оболочкой", "Эпидуральной клетчаткой"], "Около 21 пары зубцов фиксируют мозг к твёрдой оболочке.");
+  t("sc", "Поясничные сегменты L3–L5 проецируются на позвонок:", "Th11", ["L3", "Th8", "L1"], "Th10 — L1–L2; Th11 — L3–L5; Th12 — S1–S5.");
+  t("sc", "Нежный пучок (Голля) проводит информацию от:", "Нижней половины тела (ниже Th4)", ["Верхней половины тела", "Только от лица", "Только от внутренних органов"], "Клиновидный пучок (Бурдаха) — от верхней половины.");
+  t("sc", "Самая крупная радикуло-медуллярная артерия спинного мозга называется:", "Артерия Адамкевича", ["Артерия Бабчука", "Артерия Шарко", "Артерия Гейбнера"], "Большая передняя радикуло-медуллярная артерия, чаще Th10–L2, чаще слева.");
+  t("sc", "Субарахноидальное пространство спинного мозга лежит между:", "Паутинной и мягкой оболочками", ["Твёрдой и паутинной оболочками", "Надкостницей и твёрдой оболочкой", "Мягкой оболочкой и пиальной тканью"], "Содержит ликвор.");
+  t("sc", "При половинном поражении спинного мозга (Броун-Секар) на противоположной стороне теряется:", "Болевая и температурная чувствительность", ["Глубокая чувствительность", "Двигательная функция", "Вибрационная чувствительность"], "Спиноталамические пути перекрещиваются на уровне 1–2 сегментов; глубокая и моторика нарушаются на стороне поражения.");
+
+  /* ───── Ромбовидный мозг ───── */
+  t("rh", "Перекрёст пирамид расположен:", "В нижней части продолговатого мозга", ["В мосту", "В среднем мозге", "В промежуточном мозге"], "80–85% волокон кортикоспинального пути переходят на противоположную сторону.");
+  t("rh", "Какой нерв выходит между пирамидой и оливой продолговатого мозга?", "XII (подъязычный)", ["X (блуждающий)", "VI (отводящий)", "IX (языкоглоточный)"], "Передне-латеральная борозда — XII.");
+  t("rh", "Какие нервы выходят позади оливы продолговатого мозга?", "IX, X, XI", ["VII, VIII", "V, VI", "XII"], "Задне-латеральная борозда.");
+  t("rh", "Общее двигательное ядро IX, X и XI пар называется:", "Двойное ядро (nucl. ambiguus)", ["Ядро одиночного пути", "Дорсальное ядро блуждающего нерва", "Нижнее слюноотделительное ядро"], "Иннервирует мышцы глотки, гортани, мягкого нёба.");
+  t("rh", "Ядро одиночного пути проводит:", "Вкусовую и висцеральную чувствительность", ["Боль и температуру лица", "Проприоцепцию жевательных мышц", "Слух"], "Общее для VII, IX и X нервов.");
+  t("rh", "Нижние ножки мозжечка соединяют его с:", "Продолговатым мозгом", ["Мостом", "Средним мозгом", "Промежуточным мозгом"], "Средние — с мостом, верхние — со средним мозгом.");
+  t("rh", "Какая часть мозжечка — самая древняя (архицеребеллум)?", "Клочково-узелковая доля", ["Полушария", "Червь", "Миндалина мозжечка"], "Связана с вестибулярным аппаратом.");
+  t("rh", "Какое ядро мозжечка лежит самым латеральным?", "Зубчатое", ["Шаровидное", "Пробковидное", "Ядро шатра"], "Порядок от латерального к медиальному: зубчатое → пробковидное → шаровидное → шатра.");
+  t("rh", "Клетки Пуркинье лежат в:", "Ганглионарном слое коры мозжечка", ["Молекулярном слое", "Зернистом слое", "Белом веществе"], "Их аксоны — единственные эфферентные волокна коры мозжечка.");
+  t("rh", "Через какие отверстия IV желудочек сообщается с субарахноидальным пространством?", "Срединная (Мажанди) и две латеральные (Люшка) апертуры", ["Межжелудочковые отверстия Монро", "Водопровод мозга", "Арахноидальные грануляции"], "Монро соединяют боковые желудочки с III.");
+  t("rh", "Лицевой бугорок на дне IV желудочка образован:", "Коленом лицевого нерва над ядром отводящего нерва", ["Ядром подъязычного нерва", "Ядром блуждающего нерва", "Вестибулярными ядрами"], "Ядро VI лежит под лицевым бугорком.");
+  t("rh", "Крыша IV желудочка образована:", "Верхним и нижним мозговыми парусами", ["Мозолистым телом", "Сводом", "Прозрачной перегородкой"], "Вершина шатра — fastigium.");
+  t("rh", "Нервы, выходящие из мосто-мозжечкового угла:", "VII и VIII", ["V и VI", "IX и X", "III и IV"], "VI выходит у пирамиды между мостом и продолговатым; V — из латеральной части моста.");
+  t("rh", "Дыхательный и сосудодвигательный центры расположены в:", "Ретикулярной формации продолговатого мозга", ["Мозжечке", "Гипоталамусе", "Красном ядре"], "Повреждение — угроза жизни.");
+  t("rh", "Ядро Дейтерса — это:", "Латеральное вестибулярное ядро", ["Ядро одиночного пути", "Двойное ядро", "Ядро моста"], "Даёт начало вестибулоспинальному пути.");
+
+  /* ───── Средний и промежуточный ───── */
+  t("mid", "Единственный ЧН, выходящий с дорсальной поверхности ствола:", "IV (блоковый)", ["III (глазодвигательный)", "VI (отводящий)", "XI (добавочный)"], "Выходит ниже нижних холмиков и полностью перекрещивается.");
+  t("mid", "Ядро блокового нерва лежит на уровне:", "Нижних холмиков", ["Верхних холмиков", "Моста", "Зрительного перекрёста"], "Ядро III — на уровне верхних холмиков.");
+  t("mid", "Верхние холмики четверохолмия — подкорковые центры:", "Зрения", ["Слуха", "Обоняния", "Равновесия"], "Нижние — слуха.");
+  t("mid", "Чёрная субстанция лежит между:", "Основанием ножки мозга и покрышкой", ["Покрышкой и крышей", "Мостом и продолговатым мозгом", "Таламусом и гипоталамусом"], "Дофаминергические нейроны; дегенерация — болезнь Паркинсона.");
+  t("mid", "Средние 3/5 основания ножки мозга занимают:", "Кортикоспинальные и кортико-нуклеарные пути", ["Лобно-мостовой путь", "Височно-мостовой путь", "Руброспинальный путь"], "Латеральная 1/5 — височно-теменно-затылочно-мостовой, медиальная 1/5 — лобно-мостовой.");
+  t("mid", "Латеральное коленчатое тело относится к:", "Метаталамусу, зрительный анализатор", ["Эпиталамусу", "Гипоталамусу", "Субталамусу, слуховой анализатор"], "Медиальное коленчатое тело — слух.");
+  t("mid", "Шишковидное тело (эпифиз) выделяет:", "Мелатонин", ["Вазопрессин", "Окситоцин", "Тироксин"], "Эпиталамус.");
+  t("mid", "В ядре VPL таламуса переключается:", "Общая чувствительность туловища и конечностей", ["Общая чувствительность лица", "Слух", "Обоняние"], "Лицо — VPM.");
+  t("mid", "Вазопрессин и окситоцин вырабатываются в ядрах:", "Супраоптическом и паравентрикулярном", ["Серобугорных", "Сосцевидных", "Преоптических"], "Транспортируются по аксонам в нейрогипофиз.");
+  t("mid", "К какой части промежуточного мозга относится субталамическое ядро (Льюиса)?", "Субталамус", ["Эпиталамус", "Метаталамус", "Гипоталамус"], "Экстрапирамидная система.");
+  t("mid", "Какие обонятельные подкорковые структуры расположены в гипоталамусе?", "Сосцевидные тела", ["Серый бугор", "Воронка", "Зрительный перекрёст"], "Часть задней группы ядер гипоталамуса и лимбической системы.");
+  t("mid", "Какой вид чувствительности НЕ переключается в таламусе?", "Обонятельная", ["Болевая", "Зрительная", "Слуховая"], "Обонятельный путь идёт в кору, минуя таламус.");
+
+  /* ───── Конечный мозг ───── */
+  t("tel", "Центральная борозда разделяет:", "Лобную и теменную доли", ["Теменную и затылочную доли", "Лобную и височную доли", "Височную и затылочную доли"], "Латеральная борозда отделяет височную долю.");
+  t("tel", "Первичная моторная кора находится в:", "Прецентральной извилине (поле 4)", ["Постцентральной извилине", "Угловой извилине", "Верхней височной извилине"], "Клетки Беца — в V слое.");
+  t("tel", "Центр Брока расположен в:", "Задней части нижней лобной извилины", ["Задней части верхней височной извилины", "Угловой извилине", "Надкраевой извилине"], "Моторный центр речи (поля 44, 45).");
+  t("tel", "Центр Вернике расположен в:", "Задней части верхней височной извилины", ["Нижней лобной извилине", "Постцентральной извилине", "Шпорной борозде"], "Сенсорный центр речи — понимание.");
+  t("tel", "Зрительный анализатор в коре находится по краям:", "Шпорной борозды (поле 17)", ["Центральной борозды", "Латеральной борозды", "Теменно-затылочной борозды (на выпуклой стороне)"], "Клин и язычная извилина затылочной доли.");
+  t("tel", "Слуховая кора (извилины Гешля) находится в:", "Верхней височной извилине", ["Нижней лобной извилине", "Постцентральной извилине", "Затылочной доле"], "Поля 41, 42.");
+  t("tel", "Центр чтения расположен в:", "Угловой извилине (поле 39)", ["Надкраевой извилине (поле 40)", "Прецентральной извилине", "Нижней лобной извилине"], "Надкраевая — центр праксиса.");
+  t("tel", "Полосатое тело (стриатум) образуют:", "Хвостатое ядро и скорлупа", ["Скорлупа и бледный шар", "Хвостатое ядро и бледный шар", "Ограда и миндалина"], "Скорлупа + бледный шар = чечевицеобразное ядро.");
+  t("tel", "Ограда лежит между:", "Скорлупой и корой островка", ["Таламусом и хвостатым ядром", "Бледным шаром и таламусом", "Хвостатым ядром и желудочком"], "Наружная капсула — между скорлупой и оградой, крайняя — между оградой и островком.");
+  t("tel", "Через колено внутренней капсулы проходит:", "Кортико-нуклеарный путь", ["Кортикоспинальный путь", "Лобно-мостовой путь", "Зрительная лучистость"], "Кортикоспинальный — в передних 2/3 задней ножки.");
+  t("tel", "Какая артерия кровоснабжает внутреннюю капсулу и базальные ядра?", "Чечевицеобразно-полосатые ветви средней мозговой артерии", ["Базилярная артерия", "Передняя мозговая артерия (кортикальные ветви)", "Задняя мозговая артерия"], "Классическое место геморрагического инсульта.");
+  t("tel", "Какое из названных образований относится к комиссуральным путям?", "Мозолистое тело", ["Поясной пучок", "Внутренняя капсула", "Крючковидный пучок"], "Части: клюв, колено, ствол, валик.");
+  t("tel", "Задний рог бокового желудочка находится в:", "Затылочной доле", ["Лобной доле", "Височной доле", "Теменной доле"], "Передний рог — лобная, нижний — височная.");
+  t("tel", "Межжелудочковые отверстия (Монро) соединяют:", "Боковые желудочки с III желудочком", ["III и IV желудочки", "IV желудочек с субарахноидальным пространством", "Боковые желудочки между собой"], "Водопровод мозга соединяет III и IV.");
+  t("tel", "Ликвор всасывается в кровь через:", "Арахноидальные грануляции в верхний сагиттальный синус", ["Сосудистое сплетение боковых желудочков", "Водопровод мозга", "Зубчатые связки"], "Образуется сосудистыми сплетениями желудочков.");
+  t("tel", "Эпидуральное пространство головного мозга:", "Отсутствует", ["Содержит ликвор", "Содержит венозные синусы", "Лежит между паутинной и мягкой оболочками"], "Твёрдая оболочка срастается с костями черепа.");
+  t("tel", "Какая артерия НЕ входит в состав Виллизиева круга?", "Базилярная", ["Передняя мозговая", "Задняя мозговая", "Задняя соединительная"], "Базилярная делится на две задние мозговые.");
+  t("tel", "Серп большого мозга разделяет:", "Большие полушария", ["Полушария мозжечка", "Мозжечок и затылочные доли", "Гипофиз и мозг"], "Намёт мозжечка отделяет полушария от мозжечка.");
+  t("tel", "Прецентральная извилина: в верхних отделах проецируется:", "Нижняя конечность", ["Лицо", "Язык", "Верхняя конечность"], "Лицо и язык — внизу («перевёрнутый человек»).");
+
+  /* ───── Проводящие пути ───── */
+  t("path", "Пучки Голля и Бурдаха проводят:", "Суставно-мышечное чувство, вибрацию, тонкое осязание", ["Боль и температуру", "Бессознательную проприоцепцию", "Грубое осязание"], "Сознательная проприоцептивная чувствительность.");
+  t("path", "2-й нейрон пути Голля–Бурдаха находится в:", "Ядрах нежного и клиновидного пучков продолговатого мозга", ["Спинномозговом узле", "Таламусе", "Задних рогах спинного мозга"], "Перекрёст — перекрёст медиальных петель.");
+  t("path", "Перекрёст латерального спиноталамического пути находится:", "В передней белой спайке спинного мозга", ["В перекрёсте пирамид", "В мосту", "В зрительном перекрёсте"], "На уровне 1–2 сегментов выше вхождения корешка.");
+  t("path", "3-й нейрон чувствительных путей туловища находится в:", "Вентральном заднелатеральном ядре таламуса (VPL)", ["Красном ядре", "Чёрной субстанции", "Нижних холмиках"], "Для лица — VPM.");
+  t("path", "Какой путь идёт без перекрёста и через нижнюю мозжечковую ножку?", "Задний спинно-мозжечковый (Флексига)", ["Передний спинно-мозжечковый (Говерса)", "Латеральный спиноталамический", "Кортикоспинальный"], "Говерс — двойной перекрёст, верхняя ножка.");
+  t("path", "1-й нейрон кортикоспинального пути — это:", "Клетки Беца прецентральной извилины", ["Мотонейроны передних рогов", "Клетки спинномозгового узла", "Клетки Пуркинье"], "2-й нейрон — α-мотонейроны передних рогов.");
+  t("path", "Какая доля волокон кортикоспинального пути перекрещивается в пирамидах?", "80–85%", ["50%", "100%", "15–20%"], "Остальные идут в переднем кортикоспинальном пути.");
+  t("path", "Руброспинальный путь начинается в:", "Красном ядре", ["Чёрной субстанции", "Верхних холмиках", "Ядре Дейтерса"], "Перекрёст Фореля.");
+  t("path", "Тектоспинальный путь перекрещивается в:", "Дорсальном перекрёсте покрышки (Мейнерта)", ["Вентральном перекрёсте покрышки (Фореля)", "Перекрёсте пирамид", "Передней белой спайке"], "Форель — руброспинальный.");
+  t("path", "Какие волокна перекрещиваются в зрительном перекрёсте?", "От медиальных (носовых) половин сетчаток", ["От латеральных (височных) половин", "Все волокна", "Волокна не перекрещиваются"], "Поражение перекрёста даёт битемпоральную гемианопсию.");
+  t("path", "3-й нейрон зрительного пути находится в:", "Латеральном коленчатом теле", ["Медиальном коленчатом теле", "Верхних холмиках", "Шпорной борозде"], "Затем зрительная лучистость Грациоле → поле 17.");
+  t("path", "1-й нейрон слухового пути лежит в:", "Спиральном узле улитки", ["Переднем улитковом ядре", "Нижнем холмике", "Медиальном коленчатом теле"], "2-й — улитковые ядра, 3-й — нижние холмики и медиальное коленчатое тело.");
+  t("path", "2-й нейрон пути болевой и температурной чувствительности лица лежит в:", "Ядре спинномозгового пути тройничного нерва", ["Главном чувствительном ядре", "Ядре среднемозгового пути", "Двойном ядре"], "1-й — тройничный узел; 3-й — VPM.");
+
+  /* ───── ЧМН I–VI ───── */
+  t("cn", "I пара выходит из полости черепа через:", "Решётчатую пластинку", ["Зрительный канал", "Верхнюю глазничную щель", "Круглое отверстие"], "Обонятельные нити → обонятельная луковица.");
+  t("cn", "Какие ЧН являются производными переднего мозга и не имеют ядер в стволе?", "I и II", ["III и IV", "V и VI", "Все ЧН имеют ядра в стволе"], "II — отросток промежуточного мозга, поэтому одет мозговыми оболочками.");
+  t("cn", "II пара выходит из глазницы через:", "Зрительный канал", ["Верхнюю глазничную щель", "Нижнюю глазничную щель", "Подглазничный канал"], "Вместе с глазной артерией.");
+  t("cn", "Из межножковой ямки выходит нерв:", "III (глазодвигательный)", ["IV", "VI", "V"], "IV — дорсально; VI — между мостом и пирамидой.");
+  t("cn", "Какую мышцу глаза иннервирует IV пара?", "Верхнюю косую", ["Нижнюю косую", "Верхнюю прямую", "Латеральную прямую"], "VI — латеральная прямая; остальные — III.");
+  t("cn", "Парасимпатическое ядро III пары называется:", "Добавочное ядро (Якубовича–Эдингера–Вестфаля)", ["Двойное ядро", "Дорсальное ядро X", "Верхнее слюноотделительное ядро"], "Волокна идут через ресничный узел к сфинктеру зрачка и ресничной мышце.");
+  t("cn", "Какую мышцу века иннервирует III пара?", "Мышцу, поднимающую верхнее веко", ["Круговую мышцу глаза", "Лобное брюшко надчерепной мышцы", "Мышцу гордецов"], "Поражение — птоз. Круговая мышца глаза — VII.");
+  t("cn", "Какой ЧН проходит в просвете пещеристого синуса?", "VI (отводящий)", ["III", "IV", "V2"], "III, IV, V1 и V2 лежат в боковой стенке; VI — рядом с внутренней сонной артерией.");
+  t("cn", "Ядро отводящего нерва находится:", "В мосту, под лицевым бугорком", ["В среднем мозге на уровне нижних холмиков", "В продолговатом мозге", "В таламусе"], "Колено VII огибает ядро VI.");
+  t("cn", "Через верхнюю глазничную щель проходят:", "III, IV, VI и V1", ["II и V2", "V2 и V3", "III, IV, V3"], "II — через зрительный канал.");
+  t("cn", "Через какое отверстие выходит V2?", "Круглое отверстие", ["Овальное отверстие", "Верхняя глазничная щель", "Остистое отверстие"], "V1 — верхняя глазничная щель; V3 — овальное.");
+  t("cn", "Через какое отверстие выходит V3?", "Овальное отверстие", ["Круглое отверстие", "Остистое отверстие", "Шилососцевидное отверстие"], "Остистое — для средней менингеальной артерии.");
+  t("cn", "Тройничный узел (Гассеров) лежит:", "На передней поверхности пирамиды височной кости", ["В крылонёбной ямке", "В подвисочной ямке", "В пещеристом синусе"], "В тройничной (Меккелевой) полости.");
+  t("cn", "Какой ветвью V3 иннервируются передние 2/3 языка (общая чувствительность)?", "Язычным нервом", ["Нижним луночковым нервом", "Щёчным нервом", "Подбородочным нервом"], "Вкус этого отдела — через барабанную струну (VII).");
+  t("cn", "Какая ветвь V2 выходит через подглазничное отверстие?", "Подглазничный нерв", ["Скуловой нерв", "Крылонёбные нервы", "Подбородочный нерв"], "Подбородочный — ветвь V3.");
+  t("cn", "Какой ветвью V3 является подбородочный нерв?", "Нижнего луночкового", ["Язычного", "Щёчного", "Ушно-височного"], "Выходит через подбородочное отверстие.");
+  t("cn", "К какому нерву относятся лобный, слёзный и носоресничный нервы?", "V1 (глазной)", ["V2", "V3", "III"], "Все проходят через верхнюю глазничную щель.");
+  t("cn", "Жевательную мышцу иннервирует:", "Жевательный нерв — двигательная ветвь V3", ["Щёчный нерв (V3)", "Ветвь лицевого нерва (VII)", "Подглазничный нерв (V2)"], "Щёчный нерв — чувствительный. Двигательные ветви V3: жевательный, глубокие височные, крыловидные и другие.");
+  t("cn", "Парасимпатический узел, связанный с V3 и IX, — это:", "Ушной узел", ["Ресничный узел", "Крылонёбный узел", "Поднижнечелюстной узел"], "Волокна идут к околоушной железе.");
+  t("cn", "Ресничный узел связан с:", "III и V1 (носоресничным нервом)", ["VII и V2", "IX и V3", "X и V3"], "Парасимпатика — от III.");
+  t("cn", "Крылонёбный узел связан с:", "V2 и VII", ["V1 и III", "V3 и IX", "V3 и X"], "Парасимпатика идёт по большому каменистому нерву (VII).");
+  t("cn", "Афферентная часть роговичного рефлекса идёт по:", "V1 (носоресничный → длинные ресничные нервы)", ["V2", "VII", "III"], "Эфферентная часть — VII (мигание).");
+  t("cn", "Какое ядро V связано с проприоцепцией жевательных мышц?", "Ядро среднемозгового пути", ["Главное чувствительное ядро", "Ядро спинномозгового пути", "Двигательное ядро"], "Лежит в среднем мозге.");
+  t("cn", "Как выходит V нерв?", "Из латеральной части моста двумя корешками", ["Из борозды между мостом и пирамидой", "Из межножковой ямки", "Дорсально под нижними холмиками"], "Большой чувствительный и малый двигательный корешок.");
+  t("cn", "Какие из I–VI ЧН чисто чувствительные?", "I и II", ["III и IV", "V и VI", "I, II и V"], "V — смешанный; III, IV, VI — двигательные.");
+  t("cn", "Дилататор зрачка иннервируется:", "Симпатическими волокнами от верхнего шейного узла", ["III парой", "IV парой", "VI парой"], "Сфинктер зрачка — III пара (парасимпатика).");
+  t("cn", "Мышца, напрягающая барабанную перепонку, иннервируется:", "V3", ["VII", "IX", "V2"], "Двигательная ветвь V3.");
+  t("cn", "Решётчатый нерв (n. ethmoidalis anterior) — ветвь:", "Носоресничного нерва (V1)", ["Подглазничного нерва (V2)", "Язычного нерва (V3)", "Скулового нерва (V2)"], "Иннервирует слизистую носа и кожу наружного носа.");
+
+  window.TESTS = Q;
+})();
+
+</script>
+<script>
+(function () {
+  "use strict";
+
+  var C = window.CONTENT, TESTS = window.TESTS;
+  var app = document.getElementById("app");
+
+  var TOPICS = {
+    map: "Карта ЦНС", sc: "Спинной мозг", rh: "Ромбовидный мозг",
+    mid: "Средний и промежуточный", tel: "Конечный мозг", path: "Проводящие пути", cn: "ЧМН I–VI"
+  };
+  var CNS_IDS = ["map", "sc", "rh", "mid", "tel", "path"];
+  var TOTAL_SEC = C.plan.reduce(function (s, p) { return s + p.min; }, 0) * 60;
+
+  /* ───────── storage ───────── */
+  var mem = {};
+  function load() {
+    try { var s = localStorage.getItem("anat.v1"); if (s) return JSON.parse(s); } catch (e) {}
+    return mem.state || null;
+  }
+  function save() {
+    try { localStorage.setItem("anat.v1", JSON.stringify(state)); } catch (e) { mem.state = state; }
+  }
+  var state = load() || {};
+  state.done = state.done || {};
+  state.wrong = state.wrong || {};
+  state.remaining = typeof state.remaining === "number" ? state.remaining : TOTAL_SEC;
+  state.theme = state.theme || "";
+  var running = false, lastTs = 0;
+
+  /* ───────── helpers ───────── */
+  function el(tag, attrs, html) {
+    var n = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "class") n.className = attrs[k];
+      else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), attrs[k]);
+      else n.setAttribute(k, attrs[k]);
+    }
+    if (html != null) n.innerHTML = html;
+    return n;
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function fmt(sec) {
+    sec = Math.max(0, Math.round(sec));
+    var h = Math.floor(sec / 3600), m = Math.floor(sec % 3600 / 60), s = sec % 60;
+    return h + ":" + (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+  }
+  function shuffle(a) {
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function wrapTables(root) {
+    root.querySelectorAll("table").forEach(function (t) {
+      if (t.parentNode.classList.contains("tablewrap")) return;
+      var w = el("div", { class: "tablewrap" });
+      t.parentNode.insertBefore(w, t); w.appendChild(t);
+    });
+  }
+  function html(strOrNode) { return strOrNode; }
+
+  /* ───────── theme ───────── */
+  function applyTheme() {
+    if (state.theme) document.documentElement.setAttribute("data-theme", state.theme);
+    else document.documentElement.removeAttribute("data-theme");
+  }
+  document.getElementById("themeBtn").addEventListener("click", function () {
+    var dark = state.theme ? state.theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    state.theme = dark ? "light" : "dark"; save(); applyTheme();
+  });
+  applyTheme();
+
+  /* ───────── timer ───────── */
+  var miniEl = document.getElementById("timerMini"), miniText = document.getElementById("timerMiniText");
+  function tick() {
+    var now = Date.now();
+    if (running) {
+      state.remaining = Math.max(0, state.remaining - (now - lastTs) / 1000);
+      lastTs = now;
+      if (state.remaining <= 0) running = false;
+    }
+    miniText.textContent = fmt(state.remaining);
+    miniEl.classList.toggle("running", running);
+    var big = document.getElementById("bigTimer");
+    if (big) big.textContent = fmt(state.remaining);
+    var bar = document.getElementById("timeBar");
+    if (bar) bar.style.width = (100 - state.remaining / TOTAL_SEC * 100) + "%";
+    var btn = document.getElementById("timerToggle");
+    if (btn) btn.textContent = running ? "Пауза" : (state.remaining < TOTAL_SEC ? "Продолжить" : "Старт");
+  }
+  setInterval(function () { tick(); if (running) save(); }, 1000);
+  miniEl.style.cursor = "pointer";
+  miniEl.addEventListener("click", function () { toggleTimer(); });
+  function toggleTimer() {
+    if (state.remaining <= 0) return;
+    running = !running; lastTs = Date.now(); save(); tick();
+  }
+  function resetTimer() { running = false; state.remaining = TOTAL_SEC; save(); tick(); }
+
+  /* ───────── router ───────── */
+  var routes = { plan: renderPlan, brief: renderBrief, detail: renderDetail, cn: renderCN, tests: renderTests };
+  function route() {
+    var h = (location.hash || "#plan").slice(1).split("/");
+    var name = routes[h[0]] ? h[0] : "plan";
+    document.querySelectorAll("#nav a").forEach(function (a) { a.classList.toggle("active", a.dataset.route === name); });
+    app.innerHTML = "";
+    quiz = null;
+    routes[name](h[1]);
+    wrapTables(app);
+    tick();
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", route);
+
+  /* ───────── план ───────── */
+  function renderPlan() {
+    var doneMin = 0;
+    C.plan.forEach(function (p) { if (state.done[p.id]) doneMin += p.min; });
+    var pct = Math.round(doneMin / (TOTAL_SEC / 60) * 100);
+    var currentId = null;
+    for (var i = 0; i < C.plan.length; i++) if (!state.done[C.plan[i].id]) { currentId = C.plan[i].id; break; }
+
+    app.appendChild(el("h1", null, "План подготовки на 2 ч 55 мин"));
+    app.appendChild(el("p", { class: "lead" },
+      "Контрольная по ЦНС — глубоко (блоки 1–7). Черепные нервы I–VI — для пары (блок 8). " +
+      "Иди сверху вниз: прочитай краткий конспект блока, затем подробный, отметь галочкой."));
+
+    var hero = el("section", { class: "hero" });
+    hero.innerHTML =
+      '<div class="row" style="justify-content:space-between">' +
+      '<div><div class="tag">Осталось по таймеру</div><div class="bigtimer" id="bigTimer">' + fmt(state.remaining) + '</div></div>' +
+      '<div class="row no-print"><button class="btn primary" id="timerToggle">Старт</button><button class="btn" id="timerReset">Сбросить</button></div></div>' +
+      '<div><div class="progress" title="Время"><i id="timeBar"></i></div></div>' +
+      '<div><div class="row" style="justify-content:space-between;margin-bottom:6px"><span class="tag">Пройдено блоков</span><b>' + pct + '%</b></div>' +
+      '<div class="progress"><i style="width:' + pct + '%"></i></div></div>';
+    app.appendChild(hero);
+    hero.querySelector("#timerToggle").addEventListener("click", toggleTimer);
+    hero.querySelector("#timerReset").addEventListener("click", resetTimer);
+
+    var ul = el("ol", { class: "steps" });
+    C.plan.forEach(function (p, idx) {
+      var li = el("li", { class: "step" + (state.done[p.id] ? " done" : "") + (p.id === currentId ? " current" : "") });
+      var cb = el("input", { type: "checkbox", "aria-label": "Блок выполнен" });
+      cb.checked = !!state.done[p.id];
+      cb.addEventListener("change", function () { state.done[p.id] = cb.checked; save(); route(); });
+      var links;
+      if (p.id === "test") links = '<a href="#tests">Открыть тест →</a>';
+      else if (p.id === "cn") links = '<a href="#cn">Конспект ЧМН →</a><a href="#tests">Тест по ЧМН →</a>';
+      else links = '<a href="#brief">Краткий конспект →</a><a href="#detail/' + p.id + '">Подробно →</a>';
+      var mid = el("div", null,
+        '<div class="step-title">' + (idx + 1) + '. ' + esc(p.title) + '</div>' +
+        '<div class="step-goal">Цель: ' + esc(p.goal) + '</div>' +
+        '<div class="step-links">' + links + '</div>');
+      li.appendChild(cb); li.appendChild(mid);
+      li.appendChild(el("span", { class: "min" }, p.min + " мин"));
+      ul.appendChild(li);
+    });
+    app.appendChild(ul);
+
+    app.appendChild(el("div", { class: "card content", style: "margin-top:18px" },
+      "<h2>Как использовать</h2><ol>" +
+      "<li>Читай <b>краткий конспект</b> блока, затем <b>подробный</b> — по таблицам.</li>" +
+      "<li>Проводящие пути проговаривай вслух по схеме: рецептор → 1-й → 2-й → 3-й нейрон → кора.</li>" +
+      "<li>В блоке 7 пройди экспресс-тест. Ошибки сохраняются — потом открой «Работа над ошибками».</li>" +
+      "<li>ЧМН I–VI — отдельно, для занятия: ядра, выход из мозга и черепа, ветви V.</li></ol>"));
+  }
+
+  /* ───────── краткий конспект ───────── */
+  function renderBrief() {
+    app.appendChild(el("h1", null, "Краткий конспект: ЦНС"));
+    app.appendChild(el("p", { class: "lead" }, "Минимум к контрольной. Подробности — во вкладке «Подробно»."));
+    app.appendChild(el("div", { class: "row no-print", style: "margin-bottom:14px" },
+      '<button class="btn small" id="printBtn">Печать / в PDF</button>'));
+    app.querySelector("#printBtn").addEventListener("click", function () { window.print(); });
+    C.plan.forEach(function (p, i) {
+      if (!C.blocks[p.id]) return;
+      var d = el("details", { class: "fold", open: "" });
+      d.appendChild(el("summary", null, (i + 1) + ". " + esc(p.title)));
+      d.appendChild(el("div", { class: "content" }, C.blocks[p.id].brief));
+      app.appendChild(d);
+    });
+    app.appendChild(el("p", { class: "no-print" }, '<a class="btn primary" href="#tests">Проверить себя тестом</a>'));
+  }
+
+  /* ───────── подробный конспект ───────── */
+  function renderDetail(id) {
+    if (!id || !C.blocks[id] || id === "cn") id = "sc";
+    app.appendChild(el("h1", null, "Подробный конспект: ЦНС"));
+    var chips = el("div", { class: "chips no-print" });
+    CNS_IDS.forEach(function (k) {
+      var p = C.plan.filter(function (x) { return x.id === k; })[0];
+      var a = el("a", { class: "chip" + (k === id ? " on" : ""), href: "#detail/" + k, style: "text-decoration:none" }, esc(TOPICS[k]));
+      chips.appendChild(a);
+    });
+    app.appendChild(chips);
+    var p = C.plan.filter(function (x) { return x.id === id; })[0];
+    var card = el("article", { class: "card content" });
+    card.appendChild(el("div", { class: "block-head" }, "<h2>" + esc(p.title) + '</h2><span class="min">' + p.min + " мин</span>"));
+    card.appendChild(el("p", { class: "step-goal" }, "Цель: " + esc(p.goal)));
+    card.appendChild(el("div", null, C.blocks[id].detail));
+    app.appendChild(card);
+    var idx = CNS_IDS.indexOf(id), nav = el("div", { class: "row no-print" });
+    if (idx > 0) nav.appendChild(el("a", { class: "btn", href: "#detail/" + CNS_IDS[idx - 1] }, "← " + esc(TOPICS[CNS_IDS[idx - 1]])));
+    if (idx < CNS_IDS.length - 1) nav.appendChild(el("a", { class: "btn primary", href: "#detail/" + CNS_IDS[idx + 1] }, esc(TOPICS[CNS_IDS[idx + 1]]) + " →"));
+    else nav.appendChild(el("a", { class: "btn primary", href: "#tests" }, "К тестам →"));
+    app.appendChild(nav);
+  }
+
+  /* ───────── ЧМН ───────── */
+  function renderCN(mode) {
+    mode = mode === "detail" ? "detail" : "brief";
+    app.appendChild(el("h1", null, "Черепные нервы I–VI"));
+    app.appendChild(el("p", { class: "lead" }, "Для занятия ПЗ.36. Сначала таблица-минимум, потом разбор по каждой паре."));
+    var chips = el("div", { class: "chips no-print" });
+    chips.appendChild(el("a", { class: "chip" + (mode === "brief" ? " on" : ""), href: "#cn/brief", style: "text-decoration:none" }, "Краткий конспект"));
+    chips.appendChild(el("a", { class: "chip" + (mode === "detail" ? " on" : ""), href: "#cn/detail", style: "text-decoration:none" }, "Подробный конспект"));
+    app.appendChild(chips);
+    app.appendChild(el("article", { class: "card content" }, C.cn[mode]));
+    app.appendChild(el("p", { class: "no-print" }, '<a class="btn primary" href="#tests">Тест по ЧМН</a>'));
+  }
+
+  /* ───────── тесты ───────── */
+  var quiz = null;
+  function wrongList() { return TESTS.filter(function (q) { return state.wrong[q.q]; }); }
+
+  function renderTests() {
+    var cns = TESTS.filter(function (q) { return q.topic !== "cn"; });
+    var cn = TESTS.filter(function (q) { return q.topic === "cn"; });
+    var wr = wrongList();
+    app.appendChild(el("h1", null, "Тесты"));
+    app.appendChild(el("p", { class: "lead" },
+      "Всего " + TESTS.length + " вопросов: " + cns.length + " по ЦНС и " + cn.length + " по ЧМН I–VI. Варианты перемешиваются, после каждого ответа — пояснение."));
+    var grid = el("div", { class: "modes" });
+    function mode(title, desc, fn, disabled) {
+      var b = el("button", { class: "mode" }, "<b>" + title + "</b><span>" + desc + "</span>");
+      if (disabled) b.disabled = true;
+      b.addEventListener("click", fn);
+      grid.appendChild(b);
+    }
+    mode("Экспресс ЦНС", "20 случайных вопросов, около 15 минут", function () { startQuiz("Экспресс ЦНС", shuffle(cns).slice(0, 20)); });
+    mode("Полный тест ЦНС", cns.length + " вопросов по всем темам", function () { startQuiz("Полный тест ЦНС", shuffle(cns)); });
+    mode("ЧМН I–VI", cn.length + " вопросов к занятию", function () { startQuiz("ЧМН I–VI", shuffle(cn)); });
+    mode("Работа над ошибками", wr.length ? wr.length + " вопросов, где были ошибки" : "Пока нет ошибок", function () { startQuiz("Работа над ошибками", shuffle(wr)); }, !wr.length);
+    app.appendChild(grid);
+
+    app.appendChild(el("h2", { style: "margin-top:26px" }, "По теме"));
+    var chips = el("div", { class: "chips" });
+    Object.keys(TOPICS).forEach(function (k) {
+      var list = TESTS.filter(function (q) { return q.topic === k; });
+      var b = el("button", { class: "chip" }, esc(TOPICS[k]) + " · " + list.length);
+      b.addEventListener("click", function () { startQuiz(TOPICS[k], shuffle(list)); });
+      chips.appendChild(b);
+    });
+    app.appendChild(chips);
+    if (wr.length) {
+      app.appendChild(el("p", null, '<button class="btn small" id="clearWrong">Очистить список ошибок</button>'));
+      app.querySelector("#clearWrong").addEventListener("click", function () { state.wrong = {}; save(); route(); });
+    }
+  }
+
+  function startQuiz(title, list) {
+    if (!list.length) return;
+    quiz = {
+      title: title, i: 0, answered: false,
+      items: list.map(function (q) {
+        var opts = shuffle([q.c].concat(q.w));
+        return { q: q, opts: opts, pick: -1 };
+      })
+    };
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    app.innerHTML = "";
+    var it = quiz.items[quiz.i], total = quiz.items.length;
+    var right = quiz.items.filter(function (x) { return x.pick >= 0 && x.opts[x.pick] === x.q.c; }).length;
+    var card = el("section", { class: "card" });
+    card.appendChild(el("div", { class: "q-top" },
+      "<span>" + esc(quiz.title) + " · " + (quiz.i + 1) + " из " + total + "</span><span>Верно: " + right + "</span>"));
+    card.appendChild(el("div", { class: "progress", style: "margin-bottom:14px" }, '<i style="width:' + (quiz.i / total * 100) + '%"></i>'));
+    card.appendChild(el("div", { class: "tag" }, esc(TOPICS[it.q.topic])));
+    var q = el("div", { class: "q-text" }); q.textContent = it.q.q; card.appendChild(q);
+    var box = el("div", { class: "opts" });
+    var letters = ["А", "Б", "В", "Г"];
+    var explain = el("div");
+    var next = el("button", { class: "btn primary", style: "margin-top:16px;display:none" },
+      quiz.i === total - 1 ? "Результат" : "Дальше");
+    next.addEventListener("click", function () {
+      if (quiz.i === total - 1) renderResult(); else { quiz.i++; renderQuestion(); }
+    });
+    it.opts.forEach(function (o, idx) {
+      var b = el("button", { class: "opt" });
+      b.innerHTML = '<span class="k">' + letters[idx] + "</span><span></span>";
+      b.lastChild.textContent = o;
+      b.addEventListener("click", function () { answer(idx); });
+      box.appendChild(b);
+    });
+    function answer(idx) {
+      if (it.pick >= 0) return;
+      it.pick = idx;
+      var ok = it.opts[idx] === it.q.c;
+      if (ok) delete state.wrong[it.q.q]; else state.wrong[it.q.q] = true;
+      save();
+      Array.prototype.forEach.call(box.children, function (b, j) {
+        b.disabled = true;
+        if (it.opts[j] === it.q.c) b.classList.add("right");
+        else if (j === idx) b.classList.add("wrong");
+      });
+      explain.className = "explain " + (ok ? "ok" : "bad");
+      explain.innerHTML = "<b>" + (ok ? "Верно. " : "Неверно. Правильно: " + esc(it.q.c) + ". ") + "</b>" + esc(it.q.e);
+      next.style.display = "inline-flex";
+      next.focus();
+    }
+    card.appendChild(box); card.appendChild(explain); card.appendChild(next);
+    app.appendChild(card);
+    quiz.key = function (e) {
+      var n = { "1": 0, "2": 1, "3": 2, "4": 3 }[e.key];
+      if (n != null && it.pick < 0 && n < it.opts.length) answer(n);
+      else if (e.key === "Enter" && it.pick >= 0) next.click();
+    };
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener("keydown", function (e) { if (quiz && quiz.key) quiz.key(e); });
+
+  function renderResult() {
+    app.innerHTML = "";
+    var items = quiz.items, total = items.length;
+    var okN = items.filter(function (x) { return x.opts[x.pick] === x.q.c; }).length;
+    var pct = Math.round(okN / total * 100);
+    var verdict = pct >= 85 ? "Отлично, можно идти дальше." : pct >= 65 ? "Хорошо, но разбери ошибки ниже." : "Есть пробелы: перечитай подробный конспект по темам с низким результатом.";
+    var card = el("section", { class: "card" });
+    card.appendChild(el("div", { class: "tag" }, esc(quiz.title)));
+    card.appendChild(el("div", { class: "score" }, pct + "%"));
+    card.appendChild(el("p", { class: "lead" }, okN + " из " + total + ". " + verdict));
+
+    var byTopic = {};
+    items.forEach(function (x) {
+      var t = byTopic[x.q.topic] = byTopic[x.q.topic] || { n: 0, ok: 0 };
+      t.n++; if (x.opts[x.pick] === x.q.c) t.ok++;
+    });
+    var bars = el("div", { class: "bars" });
+    Object.keys(byTopic).forEach(function (k) {
+      var t = byTopic[k], p = Math.round(t.ok / t.n * 100);
+      var row = el("div", { class: "bar-row" },
+        "<span>" + esc(TOPICS[k]) + '</span><div class="progress"><i class="' + (p < 60 ? "low" : p < 85 ? "mid" : "") + '" style="width:' + p + '%"></i></div><b>' + t.ok + "/" + t.n + "</b>");
+      bars.appendChild(row);
+    });
+    card.appendChild(bars);
+
+    var bad = items.filter(function (x) { return x.opts[x.pick] !== x.q.c; });
+    if (bad.length) {
+      card.appendChild(el("h2", { style: "margin-top:22px" }, "Ошибки (" + bad.length + ")"));
+      bad.forEach(function (x) {
+        var m = el("div", { class: "mistake" });
+        var q = el("div"); q.innerHTML = "<b></b>"; q.firstChild.textContent = x.q.q; m.appendChild(q);
+        var y = el("div", { class: "your" }); y.textContent = "Твой ответ: " + x.opts[x.pick]; m.appendChild(y);
+        var a = el("div", { class: "ans" }); a.textContent = "Верно: " + x.q.c; m.appendChild(a);
+        var e = el("div", { class: "step-goal" }); e.textContent = x.q.e; m.appendChild(e);
+        card.appendChild(m);
+      });
+    }
+    var row = el("div", { class: "row", style: "margin-top:20px" });
+    if (bad.length) {
+      var again = el("button", { class: "btn primary" }, "Повторить ошибки");
+      again.addEventListener("click", function () { startQuiz("Ошибки: " + quiz.title, shuffle(bad.map(function (x) { return x.q; }))); });
+      row.appendChild(again);
+    }
+    var menu = el("a", { class: "btn", href: "#tests" }, "К выбору теста");
+    menu.addEventListener("click", function () { if (location.hash === "#tests") route(); });
+    row.appendChild(menu);
+    card.appendChild(row);
+    app.appendChild(card);
+    quiz.key = null;
+    window.scrollTo(0, 0);
+  }
+
+  route();
+})();
+
+</script>
+</body>
+</html>
